@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey.withOpacity(0.1),
         body: Column(
           children: [
             CarouselSlider(
@@ -50,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                 );
               }).toList(),
               options: CarouselOptions(
-                height: 135.0 * fem,
+                height: 185.0 * fem,
                 enlargeCenterPage: true,
                 autoPlay: true,
                 aspectRatio: 12 / 3,
@@ -71,8 +72,8 @@ class _HomePageState extends State<HomePage> {
               decorator: DotsDecorator(
                 color: Colors.grey, // Inactive color
                 activeColor: Colors.blue, // Active color
-                size: Size.square(6 * fem), // Size of dots
-                activeSize: Size(20 * fem, 6 * fem), // Size of active dot
+                size: Size.square(10 * fem), // Size of dots
+                activeSize: Size(30 * fem, 10 * fem), // Size of active dot
                 spacing: EdgeInsets.symmetric(
                     horizontal: 4 * fem), // Spacing between dots
                 activeShape: RoundedRectangleBorder(
@@ -144,7 +145,7 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                         ),
                                         TextSpan(
-                                          text: "Assured ₹500 Cashback",
+                                          text: "Assured ₹500 Cashback   ",
                                           style: TextStyle(
                                             fontSize: 16 * fem,
                                             color: AppColors.whiteColor,
@@ -156,6 +157,53 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                             ),
+                            // Align(
+                            //   alignment: Alignment.topLeft,
+                            //   child: Container(
+                            //     //alignment: Alignment.centerLeft,
+                            //     //height: 38 * fem,
+                            //     //  width: screenWidth,
+                            //     decoration: BoxDecoration(
+                            //       image: DecorationImage(
+                            //         image: AssetImage(
+                            //           "assets/img/1010.png",
+                            //         ),
+                            //         // fit: BoxFit.fill,
+                            //       ),
+                            //     ),
+                            //     child: Center(
+                            //       child: Padding(
+                            //         padding: EdgeInsets.only(
+                            //             // left: 35 * fem,
+                            //             // right: 35 * fem,
+                            //             top: 15 * fem,
+                            //             bottom: 15 * fem),
+                            //         child: Text.rich(
+                            //           //  overflow: TextOverflow.ellipsis,
+                            //           TextSpan(
+                            //             children: [
+                            //               TextSpan(
+                            //                 text: "   Special Offer: ",
+                            //                 style: TextStyle(
+                            //                   fontSize: 15 * fem,
+                            //                   fontWeight: FontWeight.bold,
+                            //                   color: AppColors.primaryColor,
+                            //                 ),
+                            //               ),
+                            //               TextSpan(
+                            //                 text: "Assured ₹500 Cashback   ",
+                            //                 style: TextStyle(
+                            //                   fontSize: 15 * fem,
+                            //                   color: AppColors.secondaryColor,
+                            //                 ),
+                            //               )
+                            //             ],
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
                             Row(
                               children: [
                                 CircleAvatar(
@@ -220,6 +268,54 @@ class _HomePageState extends State<HomePage> {
                         },
                         child: Column(
                           children: [
+                            // Align(
+                            //   alignment: Alignment.topLeft,
+                            //   child: Container(
+                            //     //alignment: Alignment.centerLeft,
+                            //     //height: 38 * fem,
+                            //     //  width: screenWidth,
+                            //     decoration: BoxDecoration(
+                            //       image: DecorationImage(
+                            //         image: AssetImage(
+                            //           "assets/img/1010.png",
+                            //         ),
+                            //         // fit: BoxFit.fill,
+                            //       ),
+                            //     ),
+                            //     child: Center(
+                            //       child: Padding(
+                            //         padding: EdgeInsets.only(
+                            //             // left: 35 * fem,
+                            //             // right: 35 * fem,
+                            //             top: 15 * fem,
+                            //             bottom: 15 * fem),
+                            //         child: Text.rich(
+                            //           //  overflow: TextOverflow.ellipsis,
+                            //           TextSpan(
+                            //             children: [
+                            //               TextSpan(
+                            //                 text: "   Special Offer: ",
+                            //                 style: TextStyle(
+                            //                   fontSize: 15 * fem,
+                            //                   fontWeight: FontWeight.bold,
+                            //                   color: AppColors.primaryColor,
+                            //                 ),
+                            //               ),
+                            //               TextSpan(
+                            //                 text: "Starting @6.75%   ",
+                            //                 style: TextStyle(
+                            //                   fontSize: 15 * fem,
+                            //                   color: AppColors.secondaryColor,
+                            //                 ),
+                            //               )
+                            //             ],
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+
                             Align(
                               alignment: Alignment.topLeft,
                               child: Container(
@@ -265,6 +361,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                             ),
+
                             Row(
                               children: [
                                 CircleAvatar(
@@ -329,6 +426,54 @@ class _HomePageState extends State<HomePage> {
                         },
                         child: Column(
                           children: [
+                            // Align(
+                            //   alignment: Alignment.topLeft,
+                            //   child: Container(
+                            //     //alignment: Alignment.centerLeft,
+                            //     //height: 38 * fem,
+                            //     //  width: screenWidth,
+                            //     decoration: BoxDecoration(
+                            //       image: DecorationImage(
+                            //         image: AssetImage(
+                            //           "assets/img/1010.png",
+                            //         ),
+                            //         // fit: BoxFit.fill,
+                            //       ),
+                            //     ),
+                            //     child: Center(
+                            //       child: Padding(
+                            //         padding: EdgeInsets.only(
+                            //             // left: 35 * fem,
+                            //             // right: 35 * fem,
+                            //             top: 15 * fem,
+                            //             bottom: 15 * fem),
+                            //         child: Text.rich(
+                            //           //  overflow: TextOverflow.ellipsis,
+                            //           TextSpan(
+                            //             children: [
+                            //               TextSpan(
+                            //                 text: "   Special Offer: ",
+                            //                 style: TextStyle(
+                            //                   fontSize: 15 * fem,
+                            //                   fontWeight: FontWeight.bold,
+                            //                   color: AppColors.primaryColor,
+                            //                 ),
+                            //               ),
+                            //               TextSpan(
+                            //                 text: "Covid-19 Coverd   ",
+                            //                 style: TextStyle(
+                            //                   fontSize: 15 * fem,
+                            //                   color: AppColors.secondaryColor,
+                            //                 ),
+                            //               )
+                            //             ],
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+
                             Align(
                               alignment: Alignment.topLeft,
                               child: Container(
@@ -438,6 +583,54 @@ class _HomePageState extends State<HomePage> {
                         },
                         child: Column(
                           children: [
+                            // Align(
+                            //   alignment: Alignment.topLeft,
+                            //   child: Container(
+                            //     //alignment: Alignment.centerLeft,
+                            //     //height: 38 * fem,
+                            //     //  width: screenWidth,
+                            //     decoration: BoxDecoration(
+                            //       image: DecorationImage(
+                            //         image: AssetImage(
+                            //           "assets/img/1010.png",
+                            //         ),
+                            //         // fit: BoxFit.fill,
+                            //       ),
+                            //     ),
+                            //     child: Center(
+                            //       child: Padding(
+                            //         padding: EdgeInsets.only(
+                            //             // left: 35 * fem,
+                            //             // right: 35 * fem,
+                            //             top: 15 * fem,
+                            //             bottom: 15 * fem),
+                            //         child: Text.rich(
+                            //           //  overflow: TextOverflow.ellipsis,
+                            //           TextSpan(
+                            //             children: [
+                            //               TextSpan(
+                            //                 text: "   Special Offer: ",
+                            //                 style: TextStyle(
+                            //                   fontSize: 15 * fem,
+                            //                   fontWeight: FontWeight.bold,
+                            //                   color: AppColors.primaryColor,
+                            //                 ),
+                            //               ),
+                            //               TextSpan(
+                            //                 text: "Starting @6.75%   ",
+                            //                 style: TextStyle(
+                            //                   fontSize: 15 * fem,
+                            //                   color: AppColors.secondaryColor,
+                            //                 ),
+                            //               )
+                            //             ],
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+
                             Align(
                               alignment: Alignment.topLeft,
                               child: Container(
@@ -552,6 +745,54 @@ class _HomePageState extends State<HomePage> {
                         },
                         child: Column(
                           children: [
+                            // Align(
+                            //   alignment: Alignment.topLeft,
+                            //   child: Container(
+                            //     //alignment: Alignment.centerLeft,
+                            //     //height: 38 * fem,
+                            //     //  width: screenWidth,
+                            //     decoration: BoxDecoration(
+                            //       image: DecorationImage(
+                            //         image: AssetImage(
+                            //           "assets/img/1010.png",
+                            //         ),
+                            //         // fit: BoxFit.fill,
+                            //       ),
+                            //     ),
+                            //     child: Center(
+                            //       child: Padding(
+                            //         padding: EdgeInsets.only(
+                            //             // left: 35 * fem,
+                            //             // right: 35 * fem,
+                            //             top: 15 * fem,
+                            //             bottom: 15 * fem),
+                            //         child: Text.rich(
+                            //           //  overflow: TextOverflow.ellipsis,
+                            //           TextSpan(
+                            //             children: [
+                            //               TextSpan(
+                            //                 text: "   Special Offer: ",
+                            //                 style: TextStyle(
+                            //                   fontSize: 15 * fem,
+                            //                   fontWeight: FontWeight.bold,
+                            //                   color: AppColors.primaryColor,
+                            //                 ),
+                            //               ),
+                            //               TextSpan(
+                            //                 text: "Starting @6.75%   ",
+                            //                 style: TextStyle(
+                            //                   fontSize: 15 * fem,
+                            //                   color: AppColors.secondaryColor,
+                            //                 ),
+                            //               )
+                            //             ],
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+
                             Align(
                               alignment: Alignment.topLeft,
                               child: Container(
