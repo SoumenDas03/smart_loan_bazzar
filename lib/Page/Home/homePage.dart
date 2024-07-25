@@ -102,793 +102,1052 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       SizedBox(
-                        height: 10 * fem,
+                        height: 15 * fem,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(
-                            () => ApplyPage(),
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Container(
-                                //alignment: Alignment.centerLeft,
-                                //height: 38 * fem,
-                                width: screenWidth,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      "assets/img/ribon1.png",
-                                    ),
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 15 * fem,
-                                      right: 45 * fem,
-                                      top: 15 * fem,
-                                      bottom: 15 * fem),
-                                  child: Text.rich(
-                                    overflow: TextOverflow.ellipsis,
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: "Special Offer: ",
-                                          style: TextStyle(
-                                            fontSize: 16 * fem,
-                                            fontWeight: FontWeight.bold,
-                                            color: AppColors.whiteColor,
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text: "Assured ₹500 Cashback   ",
-                                          style: TextStyle(
-                                            fontSize: 16 * fem,
-                                            color: AppColors.whiteColor,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            // Align(
-                            //   alignment: Alignment.topLeft,
-                            //   child: Container(
-                            //     //alignment: Alignment.centerLeft,
-                            //     //height: 38 * fem,
-                            //     //  width: screenWidth,
-                            //     decoration: BoxDecoration(
-                            //       image: DecorationImage(
-                            //         image: AssetImage(
-                            //           "assets/img/1010.png",
-                            //         ),
-                            //         // fit: BoxFit.fill,
-                            //       ),
-                            //     ),
-                            //     child: Center(
-                            //       child: Padding(
-                            //         padding: EdgeInsets.only(
-                            //             // left: 35 * fem,
-                            //             // right: 35 * fem,
-                            //             top: 15 * fem,
-                            //             bottom: 15 * fem),
-                            //         child: Text.rich(
-                            //           //  overflow: TextOverflow.ellipsis,
-                            //           TextSpan(
-                            //             children: [
-                            //               TextSpan(
-                            //                 text: "   Special Offer: ",
-                            //                 style: TextStyle(
-                            //                   fontSize: 15 * fem,
-                            //                   fontWeight: FontWeight.bold,
-                            //                   color: AppColors.primaryColor,
-                            //                 ),
-                            //               ),
-                            //               TextSpan(
-                            //                 text: "Assured ₹500 Cashback   ",
-                            //                 style: TextStyle(
-                            //                   fontSize: 15 * fem,
-                            //                   color: AppColors.secondaryColor,
-                            //                 ),
-                            //               )
-                            //             ],
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
-                            Row(
+                      // Container(
+                      //   height: 250 * fem,
+                      //   child: GridView.builder(
+                      //     // Set grid delegate
+                      //     gridDelegate:
+                      //         SliverGridDelegateWithFixedCrossAxisCount(
+                      //       crossAxisCount: 2, // Number of columns
+                      //       mainAxisSpacing: 10.0, // Space between rows
+                      //       crossAxisSpacing: 10.0, // Space between columns
+                      //       childAspectRatio:
+                      //           1.0, // Ratio between the width and height of each item
+                      //     ),
+                      //     // Set item count
+                      //     itemCount: 5,
+                      //     // Set itemBuilder
+                      //     itemBuilder: (context, index) {
+                      //       // Return a widget at the index
+                      //       return Card(
+                      //         child: Center(
+                      //           child: Text("ewuywreuhj"),
+                      //         ),
+                      //       );
+                      //     },
+                      //   ),
+                      // ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(
+                                () => ApplyPage(),
+                              );
+                            },
+                            child: Column(
                               children: [
-                                CircleAvatar(
-                                  radius: 25 * fem,
-                                  child: Center(
-                                    child: Icon(
-                                      CupertinoIcons.briefcase,
-                                      size: 30 * fem,
-                                      color: AppColors.secondaryColor,
+                                Container(
+                                  height: 60 * fem,
+                                  width: 60 * fem,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image:
+                                              AssetImage("assets/img/pl.png"),
+                                          fit: BoxFit.fill),
                                     ),
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 10 * fem,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Personal Loan",
-                                        style: TextStyle(
-                                          fontSize: 18 * fem,
-                                          fontWeight: FontWeight.bold,
-                                          color: AppColors.blackColor,
-                                        ),
-                                      ),
-                                      Text(
-                                        "Hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis",
-                                        style: TextStyle(
-                                          fontSize: 15 * fem,
-                                          color: AppColors.blackColor,
-                                        ),
-                                      ),
-                                    ],
+                                Text(
+                                  "Personal\nLoan",
+                                  style: TextStyle(
+                                    fontSize: 16 * fem,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 10 * fem,
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_right_sharp,
-                                  size: 30 * fem,
-                                  weight: 0.5,
-                                  color: AppColors.secondaryColor,
-                                ),
+                                  textAlign: TextAlign.center,
+                                )
                               ],
                             ),
-                          ],
-                        ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(
+                                () => ApplyPage(),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 35 * fem,
+                                  width: 35 * fem,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage("assets/img/bt.png"),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  "Balance\nTransfer",
+                                  style: TextStyle(
+                                    fontSize: 16 * fem,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                )
+                              ],
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(
+                                () => ApplyPage(),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 40 * fem,
+                                  width: 40 * fem,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/img/coins.png"),
+                                          fit: BoxFit.fill),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5 * fem,
+                                ),
+                                Text(
+                                  "Top-Up",
+                                  style: TextStyle(
+                                    fontSize: 16 * fem,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(
                         height: 10 * fem,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(
-                            () => ApplyPage(),
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            // Align(
-                            //   alignment: Alignment.topLeft,
-                            //   child: Container(
-                            //     //alignment: Alignment.centerLeft,
-                            //     //height: 38 * fem,
-                            //     //  width: screenWidth,
-                            //     decoration: BoxDecoration(
-                            //       image: DecorationImage(
-                            //         image: AssetImage(
-                            //           "assets/img/1010.png",
-                            //         ),
-                            //         // fit: BoxFit.fill,
-                            //       ),
-                            //     ),
-                            //     child: Center(
-                            //       child: Padding(
-                            //         padding: EdgeInsets.only(
-                            //             // left: 35 * fem,
-                            //             // right: 35 * fem,
-                            //             top: 15 * fem,
-                            //             bottom: 15 * fem),
-                            //         child: Text.rich(
-                            //           //  overflow: TextOverflow.ellipsis,
-                            //           TextSpan(
-                            //             children: [
-                            //               TextSpan(
-                            //                 text: "   Special Offer: ",
-                            //                 style: TextStyle(
-                            //                   fontSize: 15 * fem,
-                            //                   fontWeight: FontWeight.bold,
-                            //                   color: AppColors.primaryColor,
-                            //                 ),
-                            //               ),
-                            //               TextSpan(
-                            //                 text: "Starting @6.75%   ",
-                            //                 style: TextStyle(
-                            //                   fontSize: 15 * fem,
-                            //                   color: AppColors.secondaryColor,
-                            //                 ),
-                            //               )
-                            //             ],
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
 
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Container(
-                                //alignment: Alignment.centerLeft,
-                                //height: 38 * fem,
-                                width: screenWidth,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      "assets/img/ribon2.png",
-                                    ),
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 15 * fem,
-                                      right: 45 * fem,
-                                      top: 15 * fem,
-                                      bottom: 15 * fem),
-                                  child: Text.rich(
-                                    overflow: TextOverflow.ellipsis,
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: "Special Offer: ",
-                                          style: TextStyle(
-                                            fontSize: 16 * fem,
-                                            fontWeight: FontWeight.bold,
-                                            color: AppColors.whiteColor,
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text: "Starting @6.75%",
-                                          style: TextStyle(
-                                            fontSize: 16 * fem,
-                                            color: AppColors.whiteColor,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                            Row(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(
+                                () => ApplyPage(),
+                              );
+                            },
+                            child: Column(
                               children: [
-                                CircleAvatar(
-                                  radius: 25 * fem,
-                                  child: Center(
-                                    child: Icon(
-                                      CupertinoIcons.arrow_right_arrow_left,
-                                      size: 30 * fem,
-                                      color: AppColors.secondaryColor,
+                                Container(
+                                  height: 40 * fem,
+                                  width: 40 * fem,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/img/transaction.png"),
+                                          fit: BoxFit.fill),
                                     ),
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 10 * fem,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Balance transfer of personal Loan",
-                                        style: TextStyle(
-                                          fontSize: 18 * fem,
-                                          fontWeight: FontWeight.bold,
-                                          color: AppColors.blackColor,
-                                        ),
-                                      ),
-                                      Text(
-                                        "Hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis",
-                                        style: TextStyle(
-                                          fontSize: 15 * fem,
-                                          color: AppColors.blackColor,
-                                        ),
-                                      ),
-                                    ],
+                                Text(
+                                  "Transfer With\n Credit Card",
+                                  style: TextStyle(
+                                    fontSize: 16 * fem,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 10 * fem,
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_right_sharp,
-                                  size: 30 * fem,
-                                  weight: 0.5,
-                                  color: AppColors.secondaryColor,
-                                ),
+                                  textAlign: TextAlign.center,
+                                )
                               ],
                             ),
-                          ],
-                        ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(
+                                () => ApplyPage(),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 40 * fem,
+                                  width: 40 * fem,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/img/money.png"),
+                                          fit: BoxFit.fill),
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  "Parallel\nLoan",
+                                  style: TextStyle(
+                                    fontSize: 16 * fem,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            width: 0 * fem,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(
+                                () => ApplyPage(),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 45 * fem,
+                                  width: 45 * fem,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/img/offer.png"),
+                                          fit: BoxFit.fill),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5 * fem,
+                                ),
+                                Text(
+                                  "Offers",
+                                  style: TextStyle(
+                                    fontSize: 16 * fem,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(
                         height: 10 * fem,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(
-                            () => ApplyPage(),
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            // Align(
-                            //   alignment: Alignment.topLeft,
-                            //   child: Container(
-                            //     //alignment: Alignment.centerLeft,
-                            //     //height: 38 * fem,
-                            //     //  width: screenWidth,
-                            //     decoration: BoxDecoration(
-                            //       image: DecorationImage(
-                            //         image: AssetImage(
-                            //           "assets/img/1010.png",
-                            //         ),
-                            //         // fit: BoxFit.fill,
-                            //       ),
-                            //     ),
-                            //     child: Center(
-                            //       child: Padding(
-                            //         padding: EdgeInsets.only(
-                            //             // left: 35 * fem,
-                            //             // right: 35 * fem,
-                            //             top: 15 * fem,
-                            //             bottom: 15 * fem),
-                            //         child: Text.rich(
-                            //           //  overflow: TextOverflow.ellipsis,
-                            //           TextSpan(
-                            //             children: [
-                            //               TextSpan(
-                            //                 text: "   Special Offer: ",
-                            //                 style: TextStyle(
-                            //                   fontSize: 15 * fem,
-                            //                   fontWeight: FontWeight.bold,
-                            //                   color: AppColors.primaryColor,
-                            //                 ),
-                            //               ),
-                            //               TextSpan(
-                            //                 text: "Covid-19 Coverd   ",
-                            //                 style: TextStyle(
-                            //                   fontSize: 15 * fem,
-                            //                   color: AppColors.secondaryColor,
-                            //                 ),
-                            //               )
-                            //             ],
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
 
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Container(
-                                //alignment: Alignment.centerLeft,
-                                //height: 38 * fem,
-                                width: screenWidth,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      "assets/img/ribon2.png",
-                                    ),
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 15 * fem,
-                                      right: 45 * fem,
-                                      top: 15 * fem,
-                                      bottom: 15 * fem),
-                                  child: Text.rich(
-                                    // overflow: TextOverflow.ellipsis,
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: "Special Offer: ",
-                                          style: TextStyle(
-                                            fontSize: 16 * fem,
-                                            fontWeight: FontWeight.bold,
-                                            color: AppColors.whiteColor,
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text: "Covid-19 Coverd",
-                                          style: TextStyle(
-                                            fontSize: 16 * fem,
-                                            color: AppColors.whiteColor,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                CircleAvatar(
-                                  radius: 25 * fem,
-                                  child: Center(
-                                    child: Icon(
-                                      CupertinoIcons.creditcard,
-                                      size: 30 * fem,
-                                      color: AppColors.secondaryColor,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10 * fem,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Balance transfer of Credit Card outstanding",
-                                        style: TextStyle(
-                                          fontSize: 18 * fem,
-                                          fontWeight: FontWeight.bold,
-                                          color: AppColors.blackColor,
-                                        ),
-                                      ),
-                                      Text(
-                                        "Hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis",
-                                        style: TextStyle(
-                                          fontSize: 15 * fem,
-                                          color: AppColors.blackColor,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10 * fem,
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_right_sharp,
-                                  size: 30 * fem,
-                                  weight: 0.5,
-                                  color: AppColors.secondaryColor,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10 * fem,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(
-                            () => ApplyPage(),
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            // Align(
-                            //   alignment: Alignment.topLeft,
-                            //   child: Container(
-                            //     //alignment: Alignment.centerLeft,
-                            //     //height: 38 * fem,
-                            //     //  width: screenWidth,
-                            //     decoration: BoxDecoration(
-                            //       image: DecorationImage(
-                            //         image: AssetImage(
-                            //           "assets/img/1010.png",
-                            //         ),
-                            //         // fit: BoxFit.fill,
-                            //       ),
-                            //     ),
-                            //     child: Center(
-                            //       child: Padding(
-                            //         padding: EdgeInsets.only(
-                            //             // left: 35 * fem,
-                            //             // right: 35 * fem,
-                            //             top: 15 * fem,
-                            //             bottom: 15 * fem),
-                            //         child: Text.rich(
-                            //           //  overflow: TextOverflow.ellipsis,
-                            //           TextSpan(
-                            //             children: [
-                            //               TextSpan(
-                            //                 text: "   Special Offer: ",
-                            //                 style: TextStyle(
-                            //                   fontSize: 15 * fem,
-                            //                   fontWeight: FontWeight.bold,
-                            //                   color: AppColors.primaryColor,
-                            //                 ),
-                            //               ),
-                            //               TextSpan(
-                            //                 text: "Starting @6.75%   ",
-                            //                 style: TextStyle(
-                            //                   fontSize: 15 * fem,
-                            //                   color: AppColors.secondaryColor,
-                            //                 ),
-                            //               )
-                            //             ],
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
+                      // Visibility(
+                      //   visible: false,
+                      //   child: Column(
+                      //     children: [
+                      //       GestureDetector(
+                      //         onTap: () {
+                      //           Get.to(
+                      //             () => ApplyPage(),
+                      //           );
+                      //         },
+                      //         child: Column(
+                      //           children: [
+                      //             Align(
+                      //               alignment: Alignment.topLeft,
+                      //               child: Container(
+                      //                 //alignment: Alignment.centerLeft,
+                      //                 //height: 38 * fem,
+                      //                 width: screenWidth,
+                      //                 decoration: BoxDecoration(
+                      //                   image: DecorationImage(
+                      //                     image: AssetImage(
+                      //                       "assets/img/ribon1.png",
+                      //                     ),
+                      //                     fit: BoxFit.fill,
+                      //                   ),
+                      //                 ),
+                      //                 child: Padding(
+                      //                   padding: EdgeInsets.only(
+                      //                       left: 15 * fem,
+                      //                       right: 45 * fem,
+                      //                       top: 15 * fem,
+                      //                       bottom: 15 * fem),
+                      //                   child: Text.rich(
+                      //                     overflow: TextOverflow.ellipsis,
+                      //                     TextSpan(
+                      //                       children: [
+                      //                         TextSpan(
+                      //                           text: "Special Offer: ",
+                      //                           style: TextStyle(
+                      //                             fontSize: 16 * fem,
+                      //                             fontWeight: FontWeight.bold,
+                      //                             color: AppColors.whiteColor,
+                      //                           ),
+                      //                         ),
+                      //                         TextSpan(
+                      //                           text:
+                      //                               "Assured ₹500 Cashback   ",
+                      //                           style: TextStyle(
+                      //                             fontSize: 16 * fem,
+                      //                             color: AppColors.whiteColor,
+                      //                           ),
+                      //                         )
+                      //                       ],
+                      //                     ),
+                      //                   ),
+                      //                 ),
+                      //               ),
+                      //             ),
+                      //             // Align(
+                      //             //   alignment: Alignment.topLeft,
+                      //             //   child: Container(
+                      //             //     //alignment: Alignment.centerLeft,
+                      //             //     //height: 38 * fem,
+                      //             //     //  width: screenWidth,
+                      //             //     decoration: BoxDecoration(
+                      //             //       image: DecorationImage(
+                      //             //         image: AssetImage(
+                      //             //           "assets/img/1010.png",
+                      //             //         ),
+                      //             //         // fit: BoxFit.fill,
+                      //             //       ),
+                      //             //     ),
+                      //             //     child: Center(
+                      //             //       child: Padding(
+                      //             //         padding: EdgeInsets.only(
+                      //             //             // left: 35 * fem,
+                      //             //             // right: 35 * fem,
+                      //             //             top: 15 * fem,
+                      //             //             bottom: 15 * fem),
+                      //             //         child: Text.rich(
+                      //             //           //  overflow: TextOverflow.ellipsis,
+                      //             //           TextSpan(
+                      //             //             children: [
+                      //             //               TextSpan(
+                      //             //                 text: "   Special Offer: ",
+                      //             //                 style: TextStyle(
+                      //             //                   fontSize: 15 * fem,
+                      //             //                   fontWeight: FontWeight.bold,
+                      //             //                   color: AppColors.primaryColor,
+                      //             //                 ),
+                      //             //               ),
+                      //             //               TextSpan(
+                      //             //                 text: "Assured ₹500 Cashback   ",
+                      //             //                 style: TextStyle(
+                      //             //                   fontSize: 15 * fem,
+                      //             //                   color: AppColors.secondaryColor,
+                      //             //                 ),
+                      //             //               )
+                      //             //             ],
+                      //             //           ),
+                      //             //         ),
+                      //             //       ),
+                      //             //     ),
+                      //             //   ),
+                      //             // ),
+                      //             Row(
+                      //               children: [
+                      //                 CircleAvatar(
+                      //                   radius: 25 * fem,
+                      //                   child: Center(
+                      //                     child: Icon(
+                      //                       CupertinoIcons.briefcase,
+                      //                       size: 30 * fem,
+                      //                       color: AppColors.secondaryColor,
+                      //                     ),
+                      //                   ),
+                      //                 ),
+                      //                 SizedBox(
+                      //                   width: 10 * fem,
+                      //                 ),
+                      //                 Expanded(
+                      //                   child: Column(
+                      //                     mainAxisAlignment:
+                      //                         MainAxisAlignment.center,
+                      //                     crossAxisAlignment:
+                      //                         CrossAxisAlignment.start,
+                      //                     children: [
+                      //                       Text(
+                      //                         "Personal Loan",
+                      //                         style: TextStyle(
+                      //                           fontSize: 18 * fem,
+                      //                           fontWeight: FontWeight.bold,
+                      //                           color: AppColors.blackColor,
+                      //                         ),
+                      //                       ),
+                      //                       Text(
+                      //                         "Hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis",
+                      //                         style: TextStyle(
+                      //                           fontSize: 15 * fem,
+                      //                           color: AppColors.blackColor,
+                      //                         ),
+                      //                       ),
+                      //                     ],
+                      //                   ),
+                      //                 ),
+                      //                 SizedBox(
+                      //                   width: 10 * fem,
+                      //                 ),
+                      //                 Icon(
+                      //                   Icons.keyboard_arrow_right_sharp,
+                      //                   size: 30 * fem,
+                      //                   weight: 0.5,
+                      //                   color: AppColors.secondaryColor,
+                      //                 ),
+                      //               ],
+                      //             ),
+                      //           ],
+                      //         ),
+                      //       ),
+                      //       SizedBox(
+                      //         height: 10 * fem,
+                      //       ),
+                      //       GestureDetector(
+                      //         onTap: () {
+                      //           Get.to(
+                      //             () => ApplyPage(),
+                      //           );
+                      //         },
+                      //         child: Column(
+                      //           children: [
+                      //             // Align(
+                      //             //   alignment: Alignment.topLeft,
+                      //             //   child: Container(
+                      //             //     //alignment: Alignment.centerLeft,
+                      //             //     //height: 38 * fem,
+                      //             //     //  width: screenWidth,
+                      //             //     decoration: BoxDecoration(
+                      //             //       image: DecorationImage(
+                      //             //         image: AssetImage(
+                      //             //           "assets/img/1010.png",
+                      //             //         ),
+                      //             //         // fit: BoxFit.fill,
+                      //             //       ),
+                      //             //     ),
+                      //             //     child: Center(
+                      //             //       child: Padding(
+                      //             //         padding: EdgeInsets.only(
+                      //             //             // left: 35 * fem,
+                      //             //             // right: 35 * fem,
+                      //             //             top: 15 * fem,
+                      //             //             bottom: 15 * fem),
+                      //             //         child: Text.rich(
+                      //             //           //  overflow: TextOverflow.ellipsis,
+                      //             //           TextSpan(
+                      //             //             children: [
+                      //             //               TextSpan(
+                      //             //                 text: "   Special Offer: ",
+                      //             //                 style: TextStyle(
+                      //             //                   fontSize: 15 * fem,
+                      //             //                   fontWeight: FontWeight.bold,
+                      //             //                   color: AppColors.primaryColor,
+                      //             //                 ),
+                      //             //               ),
+                      //             //               TextSpan(
+                      //             //                 text: "Starting @6.75%   ",
+                      //             //                 style: TextStyle(
+                      //             //                   fontSize: 15 * fem,
+                      //             //                   color: AppColors.secondaryColor,
+                      //             //                 ),
+                      //             //               )
+                      //             //             ],
+                      //             //           ),
+                      //             //         ),
+                      //             //       ),
+                      //             //     ),
+                      //             //   ),
+                      //             // ),
 
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Container(
-                                //alignment: Alignment.centerLeft,
-                                //height: 38 * fem,
-                                width: screenWidth,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      "assets/img/ribon2.png",
-                                    ),
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 15 * fem,
-                                      right: 45 * fem,
-                                      top: 15 * fem,
-                                      bottom: 15 * fem),
-                                  child: Text.rich(
-                                    overflow: TextOverflow.ellipsis,
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: "Special Offer: ",
-                                          style: TextStyle(
-                                            fontSize: 16 * fem,
-                                            fontWeight: FontWeight.bold,
-                                            color: AppColors.whiteColor,
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text: "Starting @6.75%",
-                                          style: TextStyle(
-                                            fontSize: 16 * fem,
-                                            color: AppColors.whiteColor,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                CircleAvatar(
-                                  radius: 25 * fem,
-                                  child: Center(
-                                    child: Padding(
-                                      padding: EdgeInsets.all(10 * fem),
-                                      child:
-                                          Image.asset("assets/img/coins.png"),
-                                    ),
-                                    //  Icon(
-                                    //   CupertinoIcons.arrow_right_arrow_left,
-                                    //   size: 30 * fem,
-                                    //   color: AppColors.secondaryColor,
-                                    // ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10 * fem,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Top-up of existing loan",
-                                        style: TextStyle(
-                                          fontSize: 18 * fem,
-                                          fontWeight: FontWeight.bold,
-                                          color: AppColors.blackColor,
-                                        ),
-                                      ),
-                                      Text(
-                                        "Hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis",
-                                        style: TextStyle(
-                                          fontSize: 15 * fem,
-                                          color: AppColors.blackColor,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10 * fem,
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_right_sharp,
-                                  size: 30 * fem,
-                                  weight: 0.5,
-                                  color: AppColors.secondaryColor,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10 * fem,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(
-                            () => ApplyPage(),
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            // Align(
-                            //   alignment: Alignment.topLeft,
-                            //   child: Container(
-                            //     //alignment: Alignment.centerLeft,
-                            //     //height: 38 * fem,
-                            //     //  width: screenWidth,
-                            //     decoration: BoxDecoration(
-                            //       image: DecorationImage(
-                            //         image: AssetImage(
-                            //           "assets/img/1010.png",
-                            //         ),
-                            //         // fit: BoxFit.fill,
-                            //       ),
-                            //     ),
-                            //     child: Center(
-                            //       child: Padding(
-                            //         padding: EdgeInsets.only(
-                            //             // left: 35 * fem,
-                            //             // right: 35 * fem,
-                            //             top: 15 * fem,
-                            //             bottom: 15 * fem),
-                            //         child: Text.rich(
-                            //           //  overflow: TextOverflow.ellipsis,
-                            //           TextSpan(
-                            //             children: [
-                            //               TextSpan(
-                            //                 text: "   Special Offer: ",
-                            //                 style: TextStyle(
-                            //                   fontSize: 15 * fem,
-                            //                   fontWeight: FontWeight.bold,
-                            //                   color: AppColors.primaryColor,
-                            //                 ),
-                            //               ),
-                            //               TextSpan(
-                            //                 text: "Starting @6.75%   ",
-                            //                 style: TextStyle(
-                            //                   fontSize: 15 * fem,
-                            //                   color: AppColors.secondaryColor,
-                            //                 ),
-                            //               )
-                            //             ],
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
+                      //             Align(
+                      //               alignment: Alignment.topLeft,
+                      //               child: Container(
+                      //                 //alignment: Alignment.centerLeft,
+                      //                 //height: 38 * fem,
+                      //                 width: screenWidth,
+                      //                 decoration: BoxDecoration(
+                      //                   image: DecorationImage(
+                      //                     image: AssetImage(
+                      //                       "assets/img/ribon2.png",
+                      //                     ),
+                      //                     fit: BoxFit.fill,
+                      //                   ),
+                      //                 ),
+                      //                 child: Padding(
+                      //                   padding: EdgeInsets.only(
+                      //                       left: 15 * fem,
+                      //                       right: 45 * fem,
+                      //                       top: 15 * fem,
+                      //                       bottom: 15 * fem),
+                      //                   child: Text.rich(
+                      //                     overflow: TextOverflow.ellipsis,
+                      //                     TextSpan(
+                      //                       children: [
+                      //                         TextSpan(
+                      //                           text: "Special Offer: ",
+                      //                           style: TextStyle(
+                      //                             fontSize: 16 * fem,
+                      //                             fontWeight: FontWeight.bold,
+                      //                             color: AppColors.whiteColor,
+                      //                           ),
+                      //                         ),
+                      //                         TextSpan(
+                      //                           text: "Starting @6.75%",
+                      //                           style: TextStyle(
+                      //                             fontSize: 16 * fem,
+                      //                             color: AppColors.whiteColor,
+                      //                           ),
+                      //                         )
+                      //                       ],
+                      //                     ),
+                      //                   ),
+                      //                 ),
+                      //               ),
+                      //             ),
 
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Container(
-                                //alignment: Alignment.centerLeft,
-                                //height: 38 * fem,
-                                width: screenWidth,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      "assets/img/ribon2.png",
-                                    ),
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 15 * fem,
-                                      right: 45 * fem,
-                                      top: 15 * fem,
-                                      bottom: 15 * fem),
-                                  child: Text.rich(
-                                    // overflow: TextOverflow.ellipsis,
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: "Special Offer: ",
-                                          style: TextStyle(
-                                            fontSize: 16 * fem,
-                                            fontWeight: FontWeight.bold,
-                                            color: AppColors.whiteColor,
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text: "Starting @6.75%",
-                                          style: TextStyle(
-                                            fontSize: 16 * fem,
-                                            color: AppColors.whiteColor,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                CircleAvatar(
-                                  radius: 25 * fem,
-                                  child: Center(
-                                      child: Padding(
-                                    padding: EdgeInsets.all(10 * fem),
-                                    child: Image.asset("assets/img/money.png"),
-                                  )),
-                                ),
-                                SizedBox(
-                                  width: 10 * fem,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Parallel loan from existing bank",
-                                        style: TextStyle(
-                                          fontSize: 18 * fem,
-                                          fontWeight: FontWeight.bold,
-                                          color: AppColors.blackColor,
-                                        ),
-                                      ),
-                                      Text(
-                                        "Hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis",
-                                        style: TextStyle(
-                                          fontSize: 15 * fem,
-                                          color: AppColors.blackColor,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10 * fem,
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_right_sharp,
-                                  size: 30 * fem,
-                                  weight: 0.5,
-                                  color: AppColors.secondaryColor,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
+                      //             Row(
+                      //               children: [
+                      //                 CircleAvatar(
+                      //                   radius: 25 * fem,
+                      //                   child: Center(
+                      //                     child: Icon(
+                      //                       CupertinoIcons
+                      //                           .arrow_right_arrow_left,
+                      //                       size: 30 * fem,
+                      //                       color: AppColors.secondaryColor,
+                      //                     ),
+                      //                   ),
+                      //                 ),
+                      //                 SizedBox(
+                      //                   width: 10 * fem,
+                      //                 ),
+                      //                 Expanded(
+                      //                   child: Column(
+                      //                     mainAxisAlignment:
+                      //                         MainAxisAlignment.center,
+                      //                     crossAxisAlignment:
+                      //                         CrossAxisAlignment.start,
+                      //                     children: [
+                      //                       Text(
+                      //                         "Balance transfer of personal Loan",
+                      //                         style: TextStyle(
+                      //                           fontSize: 18 * fem,
+                      //                           fontWeight: FontWeight.bold,
+                      //                           color: AppColors.blackColor,
+                      //                         ),
+                      //                       ),
+                      //                       Text(
+                      //                         "Hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis",
+                      //                         style: TextStyle(
+                      //                           fontSize: 15 * fem,
+                      //                           color: AppColors.blackColor,
+                      //                         ),
+                      //                       ),
+                      //                     ],
+                      //                   ),
+                      //                 ),
+                      //                 SizedBox(
+                      //                   width: 10 * fem,
+                      //                 ),
+                      //                 Icon(
+                      //                   Icons.keyboard_arrow_right_sharp,
+                      //                   size: 30 * fem,
+                      //                   weight: 0.5,
+                      //                   color: AppColors.secondaryColor,
+                      //                 ),
+                      //               ],
+                      //             ),
+                      //           ],
+                      //         ),
+                      //       ),
+                      //       SizedBox(
+                      //         height: 10 * fem,
+                      //       ),
+                      //       GestureDetector(
+                      //         onTap: () {
+                      //           Get.to(
+                      //             () => ApplyPage(),
+                      //           );
+                      //         },
+                      //         child: Column(
+                      //           children: [
+                      //             // Align(
+                      //             //   alignment: Alignment.topLeft,
+                      //             //   child: Container(
+                      //             //     //alignment: Alignment.centerLeft,
+                      //             //     //height: 38 * fem,
+                      //             //     //  width: screenWidth,
+                      //             //     decoration: BoxDecoration(
+                      //             //       image: DecorationImage(
+                      //             //         image: AssetImage(
+                      //             //           "assets/img/1010.png",
+                      //             //         ),
+                      //             //         // fit: BoxFit.fill,
+                      //             //       ),
+                      //             //     ),
+                      //             //     child: Center(
+                      //             //       child: Padding(
+                      //             //         padding: EdgeInsets.only(
+                      //             //             // left: 35 * fem,
+                      //             //             // right: 35 * fem,
+                      //             //             top: 15 * fem,
+                      //             //             bottom: 15 * fem),
+                      //             //         child: Text.rich(
+                      //             //           //  overflow: TextOverflow.ellipsis,
+                      //             //           TextSpan(
+                      //             //             children: [
+                      //             //               TextSpan(
+                      //             //                 text: "   Special Offer: ",
+                      //             //                 style: TextStyle(
+                      //             //                   fontSize: 15 * fem,
+                      //             //                   fontWeight: FontWeight.bold,
+                      //             //                   color: AppColors.primaryColor,
+                      //             //                 ),
+                      //             //               ),
+                      //             //               TextSpan(
+                      //             //                 text: "Covid-19 Coverd   ",
+                      //             //                 style: TextStyle(
+                      //             //                   fontSize: 15 * fem,
+                      //             //                   color: AppColors.secondaryColor,
+                      //             //                 ),
+                      //             //               )
+                      //             //             ],
+                      //             //           ),
+                      //             //         ),
+                      //             //       ),
+                      //             //     ),
+                      //             //   ),
+                      //             // ),
+
+                      //             Align(
+                      //               alignment: Alignment.topLeft,
+                      //               child: Container(
+                      //                 //alignment: Alignment.centerLeft,
+                      //                 //height: 38 * fem,
+                      //                 width: screenWidth,
+                      //                 decoration: BoxDecoration(
+                      //                   image: DecorationImage(
+                      //                     image: AssetImage(
+                      //                       "assets/img/ribon2.png",
+                      //                     ),
+                      //                     fit: BoxFit.fill,
+                      //                   ),
+                      //                 ),
+                      //                 child: Padding(
+                      //                   padding: EdgeInsets.only(
+                      //                       left: 15 * fem,
+                      //                       right: 45 * fem,
+                      //                       top: 15 * fem,
+                      //                       bottom: 15 * fem),
+                      //                   child: Text.rich(
+                      //                     // overflow: TextOverflow.ellipsis,
+                      //                     TextSpan(
+                      //                       children: [
+                      //                         TextSpan(
+                      //                           text: "Special Offer: ",
+                      //                           style: TextStyle(
+                      //                             fontSize: 16 * fem,
+                      //                             fontWeight: FontWeight.bold,
+                      //                             color: AppColors.whiteColor,
+                      //                           ),
+                      //                         ),
+                      //                         TextSpan(
+                      //                           text: "Covid-19 Coverd",
+                      //                           style: TextStyle(
+                      //                             fontSize: 16 * fem,
+                      //                             color: AppColors.whiteColor,
+                      //                           ),
+                      //                         )
+                      //                       ],
+                      //                     ),
+                      //                   ),
+                      //                 ),
+                      //               ),
+                      //             ),
+                      //             Row(
+                      //               children: [
+                      //                 CircleAvatar(
+                      //                   radius: 25 * fem,
+                      //                   child: Center(
+                      //                     child: Icon(
+                      //                       CupertinoIcons.creditcard,
+                      //                       size: 30 * fem,
+                      //                       color: AppColors.secondaryColor,
+                      //                     ),
+                      //                   ),
+                      //                 ),
+                      //                 SizedBox(
+                      //                   width: 10 * fem,
+                      //                 ),
+                      //                 Expanded(
+                      //                   child: Column(
+                      //                     mainAxisAlignment:
+                      //                         MainAxisAlignment.center,
+                      //                     crossAxisAlignment:
+                      //                         CrossAxisAlignment.start,
+                      //                     children: [
+                      //                       Text(
+                      //                         "Balance transfer of Credit Card outstanding",
+                      //                         style: TextStyle(
+                      //                           fontSize: 18 * fem,
+                      //                           fontWeight: FontWeight.bold,
+                      //                           color: AppColors.blackColor,
+                      //                         ),
+                      //                       ),
+                      //                       Text(
+                      //                         "Hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis",
+                      //                         style: TextStyle(
+                      //                           fontSize: 15 * fem,
+                      //                           color: AppColors.blackColor,
+                      //                         ),
+                      //                       ),
+                      //                     ],
+                      //                   ),
+                      //                 ),
+                      //                 SizedBox(
+                      //                   width: 10 * fem,
+                      //                 ),
+                      //                 Icon(
+                      //                   Icons.keyboard_arrow_right_sharp,
+                      //                   size: 30 * fem,
+                      //                   weight: 0.5,
+                      //                   color: AppColors.secondaryColor,
+                      //                 ),
+                      //               ],
+                      //             ),
+                      //           ],
+                      //         ),
+                      //       ),
+                      //       SizedBox(
+                      //         height: 10 * fem,
+                      //       ),
+                      //       GestureDetector(
+                      //         onTap: () {
+                      //           Get.to(
+                      //             () => ApplyPage(),
+                      //           );
+                      //         },
+                      //         child: Column(
+                      //           children: [
+                      //             // Align(
+                      //             //   alignment: Alignment.topLeft,
+                      //             //   child: Container(
+                      //             //     //alignment: Alignment.centerLeft,
+                      //             //     //height: 38 * fem,
+                      //             //     //  width: screenWidth,
+                      //             //     decoration: BoxDecoration(
+                      //             //       image: DecorationImage(
+                      //             //         image: AssetImage(
+                      //             //           "assets/img/1010.png",
+                      //             //         ),
+                      //             //         // fit: BoxFit.fill,
+                      //             //       ),
+                      //             //     ),
+                      //             //     child: Center(
+                      //             //       child: Padding(
+                      //             //         padding: EdgeInsets.only(
+                      //             //             // left: 35 * fem,
+                      //             //             // right: 35 * fem,
+                      //             //             top: 15 * fem,
+                      //             //             bottom: 15 * fem),
+                      //             //         child: Text.rich(
+                      //             //           //  overflow: TextOverflow.ellipsis,
+                      //             //           TextSpan(
+                      //             //             children: [
+                      //             //               TextSpan(
+                      //             //                 text: "   Special Offer: ",
+                      //             //                 style: TextStyle(
+                      //             //                   fontSize: 15 * fem,
+                      //             //                   fontWeight: FontWeight.bold,
+                      //             //                   color: AppColors.primaryColor,
+                      //             //                 ),
+                      //             //               ),
+                      //             //               TextSpan(
+                      //             //                 text: "Starting @6.75%   ",
+                      //             //                 style: TextStyle(
+                      //             //                   fontSize: 15 * fem,
+                      //             //                   color: AppColors.secondaryColor,
+                      //             //                 ),
+                      //             //               )
+                      //             //             ],
+                      //             //           ),
+                      //             //         ),
+                      //             //       ),
+                      //             //     ),
+                      //             //   ),
+                      //             // ),
+
+                      //             Align(
+                      //               alignment: Alignment.topLeft,
+                      //               child: Container(
+                      //                 //alignment: Alignment.centerLeft,
+                      //                 //height: 38 * fem,
+                      //                 width: screenWidth,
+                      //                 decoration: BoxDecoration(
+                      //                   image: DecorationImage(
+                      //                     image: AssetImage(
+                      //                       "assets/img/ribon2.png",
+                      //                     ),
+                      //                     fit: BoxFit.fill,
+                      //                   ),
+                      //                 ),
+                      //                 child: Padding(
+                      //                   padding: EdgeInsets.only(
+                      //                       left: 15 * fem,
+                      //                       right: 45 * fem,
+                      //                       top: 15 * fem,
+                      //                       bottom: 15 * fem),
+                      //                   child: Text.rich(
+                      //                     overflow: TextOverflow.ellipsis,
+                      //                     TextSpan(
+                      //                       children: [
+                      //                         TextSpan(
+                      //                           text: "Special Offer: ",
+                      //                           style: TextStyle(
+                      //                             fontSize: 16 * fem,
+                      //                             fontWeight: FontWeight.bold,
+                      //                             color: AppColors.whiteColor,
+                      //                           ),
+                      //                         ),
+                      //                         TextSpan(
+                      //                           text: "Starting @6.75%",
+                      //                           style: TextStyle(
+                      //                             fontSize: 16 * fem,
+                      //                             color: AppColors.whiteColor,
+                      //                           ),
+                      //                         )
+                      //                       ],
+                      //                     ),
+                      //                   ),
+                      //                 ),
+                      //               ),
+                      //             ),
+                      //             Row(
+                      //               children: [
+                      //                 CircleAvatar(
+                      //                   radius: 25 * fem,
+                      //                   child: Center(
+                      //                     child: Padding(
+                      //                       padding: EdgeInsets.all(10 * fem),
+                      //                       child: Image.asset(
+                      //                           "assets/img/coins.png"),
+                      //                     ),
+                      //                     //  Icon(
+                      //                     //   CupertinoIcons.arrow_right_arrow_left,
+                      //                     //   size: 30 * fem,
+                      //                     //   color: AppColors.secondaryColor,
+                      //                     // ),
+                      //                   ),
+                      //                 ),
+                      //                 SizedBox(
+                      //                   width: 10 * fem,
+                      //                 ),
+                      //                 Expanded(
+                      //                   child: Column(
+                      //                     mainAxisAlignment:
+                      //                         MainAxisAlignment.center,
+                      //                     crossAxisAlignment:
+                      //                         CrossAxisAlignment.start,
+                      //                     children: [
+                      //                       Text(
+                      //                         "Top-up of existing loan",
+                      //                         style: TextStyle(
+                      //                           fontSize: 18 * fem,
+                      //                           fontWeight: FontWeight.bold,
+                      //                           color: AppColors.blackColor,
+                      //                         ),
+                      //                       ),
+                      //                       Text(
+                      //                         "Hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis",
+                      //                         style: TextStyle(
+                      //                           fontSize: 15 * fem,
+                      //                           color: AppColors.blackColor,
+                      //                         ),
+                      //                       ),
+                      //                     ],
+                      //                   ),
+                      //                 ),
+                      //                 SizedBox(
+                      //                   width: 10 * fem,
+                      //                 ),
+                      //                 Icon(
+                      //                   Icons.keyboard_arrow_right_sharp,
+                      //                   size: 30 * fem,
+                      //                   weight: 0.5,
+                      //                   color: AppColors.secondaryColor,
+                      //                 ),
+                      //               ],
+                      //             ),
+                      //           ],
+                      //         ),
+                      //       ),
+                      //       SizedBox(
+                      //         height: 10 * fem,
+                      //       ),
+                      //       GestureDetector(
+                      //         onTap: () {
+                      //           Get.to(
+                      //             () => ApplyPage(),
+                      //           );
+                      //         },
+                      //         child: Column(
+                      //           children: [
+                      //             // Align(
+                      //             //   alignment: Alignment.topLeft,
+                      //             //   child: Container(
+                      //             //     //alignment: Alignment.centerLeft,
+                      //             //     //height: 38 * fem,
+                      //             //     //  width: screenWidth,
+                      //             //     decoration: BoxDecoration(
+                      //             //       image: DecorationImage(
+                      //             //         image: AssetImage(
+                      //             //           "assets/img/1010.png",
+                      //             //         ),
+                      //             //         // fit: BoxFit.fill,
+                      //             //       ),
+                      //             //     ),
+                      //             //     child: Center(
+                      //             //       child: Padding(
+                      //             //         padding: EdgeInsets.only(
+                      //             //             // left: 35 * fem,
+                      //             //             // right: 35 * fem,
+                      //             //             top: 15 * fem,
+                      //             //             bottom: 15 * fem),
+                      //             //         child: Text.rich(
+                      //             //           //  overflow: TextOverflow.ellipsis,
+                      //             //           TextSpan(
+                      //             //             children: [
+                      //             //               TextSpan(
+                      //             //                 text: "   Special Offer: ",
+                      //             //                 style: TextStyle(
+                      //             //                   fontSize: 15 * fem,
+                      //             //                   fontWeight: FontWeight.bold,
+                      //             //                   color: AppColors.primaryColor,
+                      //             //                 ),
+                      //             //               ),
+                      //             //               TextSpan(
+                      //             //                 text: "Starting @6.75%   ",
+                      //             //                 style: TextStyle(
+                      //             //                   fontSize: 15 * fem,
+                      //             //                   color: AppColors.secondaryColor,
+                      //             //                 ),
+                      //             //               )
+                      //             //             ],
+                      //             //           ),
+                      //             //         ),
+                      //             //       ),
+                      //             //     ),
+                      //             //   ),
+                      //             // ),
+
+                      //             Align(
+                      //               alignment: Alignment.topLeft,
+                      //               child: Container(
+                      //                 //alignment: Alignment.centerLeft,
+                      //                 //height: 38 * fem,
+                      //                 width: screenWidth,
+                      //                 decoration: BoxDecoration(
+                      //                   image: DecorationImage(
+                      //                     image: AssetImage(
+                      //                       "assets/img/ribon2.png",
+                      //                     ),
+                      //                     fit: BoxFit.fill,
+                      //                   ),
+                      //                 ),
+                      //                 child: Padding(
+                      //                   padding: EdgeInsets.only(
+                      //                       left: 15 * fem,
+                      //                       right: 45 * fem,
+                      //                       top: 15 * fem,
+                      //                       bottom: 15 * fem),
+                      //                   child: Text.rich(
+                      //                     // overflow: TextOverflow.ellipsis,
+                      //                     TextSpan(
+                      //                       children: [
+                      //                         TextSpan(
+                      //                           text: "Special Offer: ",
+                      //                           style: TextStyle(
+                      //                             fontSize: 16 * fem,
+                      //                             fontWeight: FontWeight.bold,
+                      //                             color: AppColors.whiteColor,
+                      //                           ),
+                      //                         ),
+                      //                         TextSpan(
+                      //                           text: "Starting @6.75%",
+                      //                           style: TextStyle(
+                      //                             fontSize: 16 * fem,
+                      //                             color: AppColors.whiteColor,
+                      //                           ),
+                      //                         )
+                      //                       ],
+                      //                     ),
+                      //                   ),
+                      //                 ),
+                      //               ),
+                      //             ),
+                      //             Row(
+                      //               children: [
+                      //                 CircleAvatar(
+                      //                   radius: 25 * fem,
+                      //                   child: Center(
+                      //                       child: Padding(
+                      //                     padding: EdgeInsets.all(10 * fem),
+                      //                     child: Image.asset(
+                      //                         "assets/img/money.png"),
+                      //                   )),
+                      //                 ),
+                      //                 SizedBox(
+                      //                   width: 10 * fem,
+                      //                 ),
+                      //                 Expanded(
+                      //                   child: Column(
+                      //                     mainAxisAlignment:
+                      //                         MainAxisAlignment.center,
+                      //                     crossAxisAlignment:
+                      //                         CrossAxisAlignment.start,
+                      //                     children: [
+                      //                       Text(
+                      //                         "Parallel loan from existing bank",
+                      //                         style: TextStyle(
+                      //                           fontSize: 18 * fem,
+                      //                           fontWeight: FontWeight.bold,
+                      //                           color: AppColors.blackColor,
+                      //                         ),
+                      //                       ),
+                      //                       Text(
+                      //                         "Hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis",
+                      //                         style: TextStyle(
+                      //                           fontSize: 15 * fem,
+                      //                           color: AppColors.blackColor,
+                      //                         ),
+                      //                       ),
+                      //                     ],
+                      //                   ),
+                      //                 ),
+                      //                 SizedBox(
+                      //                   width: 10 * fem,
+                      //                 ),
+                      //                 Icon(
+                      //                   Icons.keyboard_arrow_right_sharp,
+                      //                   size: 30 * fem,
+                      //                   weight: 0.5,
+                      //                   color: AppColors.secondaryColor,
+                      //                 ),
+                      //               ],
+                      //             ),
+                      //           ],
+                      //         ),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // )
                     ],
                   ),
                 ),
