@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_loan_bazzar/Page/Auth/Forgot/forgotPage.dart';
 import 'package:smart_loan_bazzar/Page/Auth/Login/loginController.dart';
-import 'package:smart_loan_bazzar/Page/Dashboard/dashboardPage.dart';
 import 'package:smart_loan_bazzar/Utils/UtilsColors.dart';
+import 'package:smart_loan_bazzar/Utils/snakebarUtils.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -18,6 +18,8 @@ class _LoginPageState extends State<LoginPage> {
   final Logincontroller logincontroller = Get.put(
     Logincontroller(),
   );
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     width: screenWidth,
                     child: TextFormField(
+                      controller: phoneController,
                       style: TextStyle(color: AppColors.secondaryColor),
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
@@ -81,6 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     width: screenWidth,
                     child: TextFormField(
+                      controller: passwordController,
                       obscureText: true,
                       style: TextStyle(color: AppColors.secondaryColor),
                       decoration: InputDecoration(
@@ -129,25 +133,53 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(
                     height: 50 * fem,
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Get.to(
-                        () => DashboardPage(),
-                      );
-                    },
-                    child: Text(
-                      "Log In",
-                      style: TextStyle(
-                        fontSize: 15 * fem,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.whiteColor,
-                      ),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(screenWidth, 50 * fem),
-                      backgroundColor: AppColors.primaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25 * fem),
+                  Container(
+                    width: screenWidth,
+                    height: 50 * fem,
+                    child: Obx(
+                      () => ElevatedButton(
+                        onPressed: () {
+                          logincontroller.isChecked.value == false
+                              ? SnackbarUtils.showFloatingSnackbar(
+                                  "Error",
+                                  "Please Accept Term and Condition",
+                                  snackPosition: SnackPosition.TOP,
+                                )
+                              : passwordController.text.trim().isEmpty ||
+                                      phoneController.text.trim().isEmpty
+                                  ? SnackbarUtils.showFloatingSnackbar(
+                                      "Error",
+                                      "All Field Are Required",
+                                      snackPosition: SnackPosition.TOP,
+                                    )
+                                  : logincontroller.Login(
+                                      password: passwordController.text.trim(),
+                                      phone: phoneController.text.trim(),
+                                    );
+                        },
+                        child: logincontroller.isLoading.value
+                            ? Center(
+                                child: CircularProgressIndicator(
+                                  color: AppColors.whiteColor,
+                                ),
+                              )
+                            : Text(
+                                "Log In",
+                                style: TextStyle(
+                                  fontSize: 15 * fem,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.whiteColor,
+                                ),
+                              ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              logincontroller.isChecked.value == true
+                                  ? AppColors.primaryColor
+                                  : AppColors.grayColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25 * fem),
+                          ),
+                        ),
                       ),
                     ),
                   ),

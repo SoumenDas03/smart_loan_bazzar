@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_loan_bazzar/Page/Auth/authPermission.dart';
+import 'package:smart_loan_bazzar/Page/Dashboard/dashboardPage.dart';
 import 'package:smart_loan_bazzar/Utils/UtilsColors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -20,8 +22,19 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _navigatehome() async {
-    await Future.delayed(Duration(milliseconds: 1500), () {});
-    Get.to(() => AuthPermission());
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    if (token == null) {
+      await Future.delayed(Duration(milliseconds: 1500), () {});
+      Get.to(() => AuthPermission());
+      print(token);
+    } else {
+      await Future.delayed(Duration(milliseconds: 1500), () {});
+      Get.to(
+        () => DashboardPage(),
+      );
+      print(token);
+    }
   }
 
   @override

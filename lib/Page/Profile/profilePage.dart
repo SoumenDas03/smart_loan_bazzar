@@ -3,12 +3,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_loan_bazzar/Page/Auth/Login/loginController.dart';
 import 'package:smart_loan_bazzar/Page/Auth/authPermission.dart';
 import 'package:smart_loan_bazzar/Page/MyLoans/myLoansPage.dart';
 import 'package:smart_loan_bazzar/Page/MyWallet/myWalletPage.dart';
+import 'package:smart_loan_bazzar/Page/Profile/ProfileController.dart';
 import 'package:smart_loan_bazzar/Page/Profile/changePasswordPage.dart';
 import 'package:smart_loan_bazzar/Page/Profile/updateProfilePage.dart';
 import 'package:smart_loan_bazzar/Utils/UtilsColors.dart';
+import 'package:smart_loan_bazzar/Utils/snakebarUtils.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key, required this.profileAppbar});
@@ -19,6 +23,23 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   loadData();
+  // }
+
+  // String? token;
+  // loadData() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   token = prefs.getString('token');
+  //   profilecontroller.ProfileDetails(
+  //     token: token.toString(),
+  //   );
+  // }
+
+  final Logincontroller logincontroller = Get.put(Logincontroller());
+  final Profilecontroller profilecontroller = Get.put(Profilecontroller());
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQuery = MediaQuery.of(context);
@@ -55,13 +76,44 @@ class _ProfilePageState extends State<ProfilePage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  // CircleAvatar(
+                  //   backgroundColor: AppColors.secondaryColor,
+                  //   radius: 68 * fem,
+                  //   child: Obx(
+                  //     () => profilecontroller.isLoading.value
+                  //         ? Center(
+                  //             child: CircularProgressIndicator(),
+                  //           )
+                  //         : CircleAvatar(
+                  //             backgroundColor: AppColors.whiteColor,
+                  //             radius: 67 * fem,
+                  //             backgroundImage: profilecontroller
+                  //                         .profileDetailsModel.isNullOrBlank ==
+                  //                     true
+                  //                 ? AssetImage("assets/img/user.png")
+                  //                 : NetworkImage(profilecontroller
+                  //                     .profileDetailsModel!.profilepic),
+                  //           ),
+                  //   ),
+                  // ),
                   CircleAvatar(
                     backgroundColor: AppColors.secondaryColor,
                     radius: 68 * fem,
-                    child: CircleAvatar(
-                      backgroundColor: AppColors.whiteColor,
-                      radius: 67 * fem,
-                      backgroundImage: AssetImage("assets/img/user.png"),
+                    child: Obx(
+                      () => profilecontroller.isLoading.value
+                          ? Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : CircleAvatar(
+                              backgroundColor: AppColors.whiteColor,
+                              radius: 67 * fem,
+                              backgroundImage: profilecontroller
+                                          .profileDetailsModel?.profilepic !=
+                                      null
+                                  ? NetworkImage(profilecontroller
+                                      .profileDetailsModel!.profilepic)
+                                  : AssetImage("assets/img/user.png"),
+                            ),
                     ),
                   ),
                   SizedBox(
@@ -337,10 +389,18 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 50 * fem,
                   ),
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      final SharedPreferences sharedPreferences =
+                          await SharedPreferences.getInstance();
+                      sharedPreferences.clear();
                       Get.offUntil(
                         GetPageRoute(page: () => AuthPermission()),
                         ModalRoute.withName(''),
+                      );
+                      SnackbarUtils.showFloatingSnackbar(
+                        "Success",
+                        "Logout Successfull",
+                        snackPosition: SnackPosition.TOP,
                       );
                     },
                     child: Text(
