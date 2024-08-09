@@ -1,140 +1,3 @@
-// import 'package:flutter/cupertino.dart';
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:smart_loan_bazzar/Page/Appy/salaryDepositedBank/salaryDepositedBankController.dart';
-// import 'package:smart_loan_bazzar/Utils/UtilsColors.dart';
-
-// class SalaryDepositedBankPage extends StatelessWidget {
-//   const SalaryDepositedBankPage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final SalaryDepositedBankController controller =
-//         Get.put(SalaryDepositedBankController());
-//     final MediaQueryData mediaQuery = MediaQuery.of(context);
-//     final double screenWidth = mediaQuery.size.width;
-//     final double fem = screenWidth / 375.0;
-
-//     return SafeArea(
-//       child: SafeArea(
-//         child: Scaffold(
-//           body: Column(
-//             children: [
-//               Padding(
-//                 padding: EdgeInsets.all(15 * fem),
-//                 child: Row(
-//                   children: [
-//                     GestureDetector(
-//                       onTap: () {
-//                         Get.back();
-//                       },
-//                       child: Icon(
-//                         CupertinoIcons.clear_circled_solid,
-//                         color: Colors.black,
-//                       ),
-//                     ),
-//                     Spacer(),
-//                     Text(
-//                       "Salary Deposited Bank",
-//                       style: TextStyle(
-//                           fontSize: 20 * fem, color: AppColors.primaryColor),
-//                     ),
-//                     Spacer(),
-//                   ],
-//                 ),
-//               ),
-//               Padding(
-//                 padding: EdgeInsets.all(15 * fem),
-//                 child: Material(
-//                   elevation: 3 * fem,
-//                   child: Padding(
-//                     padding: EdgeInsets.only(left: 8 * fem, right: 8 * fem),
-//                     child: Center(
-//                       child: Obx(
-//                         () => TextFormField(
-//                           controller: controller.searchItemController,
-//                           textAlign: TextAlign.left,
-//                           decoration: InputDecoration(
-//                             border: InputBorder.none,
-//                             prefixIcon: Icon(Icons.search),
-//                             hintText: "Search",
-//                             contentPadding: EdgeInsets.only(top: 12 * fem),
-//                             suffixIcon: Visibility(
-//                               visible: controller.showSuffixIcon.value,
-//                               child: GestureDetector(
-//                                 onTap: () {
-//                                   controller.searchItemController.clear();
-//                                   controller
-//                                       .onSearchTextChanged(); // To reset the filtered list
-//                                 },
-//                                 child: Icon(Icons.close),
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//               Container(
-//                 height: 1.5 * fem,
-//                 color: Colors.black12,
-//               ),
-//               Expanded(
-//                 child: Obx(
-//                   () => controller.filteredItems.isEmpty
-//                       ? Padding(
-//                           padding: EdgeInsets.all(15 * fem),
-//                           child: Text("No item found"),
-//                         )
-//                       : ListView.builder(
-//                           itemCount: controller.filteredItems.length,
-//                           padding: EdgeInsets.all(15 * fem),
-//                           itemBuilder: (context, index) {
-//                             return GestureDetector(
-//                               onTap: () {
-//                                 controller.selectedIndex.value = index;
-//                                 controller.searchItemController.text =
-//                                     controller.filteredItems[index];
-//                                 controller.showSuffixIcon.value = true;
-//                               },
-//                               child: Row(
-//                                 children: [
-//                                   Radio<int>(
-//                                     value: index,
-//                                     groupValue: controller.selectedIndex.value,
-//                                     onChanged: (value) {
-//                                       controller.selectedIndex.value = value;
-//                                       controller.searchItemController.text =
-//                                           controller.filteredItems[index];
-//                                       controller.showSuffixIcon.value = true;
-//                                     },
-//                                   ),
-//                                   Expanded(
-//                                     child: Text(
-//                                       controller.filteredItems[index]
-//                                           .toUpperCase(),
-//                                       style: TextStyle(fontSize: 18 * fem),
-//                                     ),
-//                                   ),
-//                                 ],
-//                               ),
-//                             );
-//                           },
-//                         ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// ignore_for_file: unnecessary_null_comparison
-
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
@@ -145,16 +8,15 @@ import 'package:smart_loan_bazzar/Utils/AppRout.dart';
 import 'package:smart_loan_bazzar/Utils/UtilsColors.dart';
 import 'package:http/http.dart' as http;
 
-class SalaryDepositedBankPage extends StatefulWidget {
-  const SalaryDepositedBankPage({super.key, required this.SalaryDepositedBank});
-  final String SalaryDepositedBank;
+class ExistingBankPage extends StatefulWidget {
+  const ExistingBankPage({super.key, required this.ExistingBankName});
+  final String ExistingBankName;
 
   @override
-  State<SalaryDepositedBankPage> createState() =>
-      _SalaryDepositedBankPageState();
+  State<ExistingBankPage> createState() => _ExistingBankPageState();
 }
 
-class _SalaryDepositedBankPageState extends State<SalaryDepositedBankPage> {
+class _ExistingBankPageState extends State<ExistingBankPage> {
   final TextEditingController searchItemController = TextEditingController();
   List<String> items = [];
   int? selectedIndex;
@@ -169,8 +31,8 @@ class _SalaryDepositedBankPageState extends State<SalaryDepositedBankPage> {
     fetchBanks(); // Fetch cities from the API
     searchItemController.addListener(_onSearchTextChanged);
 
-    if (widget.SalaryDepositedBank != null) {
-      selectedIndex = items.indexOf(widget.SalaryDepositedBank);
+    if (widget.ExistingBankName != null) {
+      selectedIndex = items.indexOf(widget.ExistingBankName);
     }
   }
 
@@ -227,13 +89,6 @@ class _SalaryDepositedBankPageState extends State<SalaryDepositedBankPage> {
               .contains(searchItemController.text.toLowerCase()))
           .toList();
     });
-  }
-
-  @override
-  void dispose() {
-    searchItemController.removeListener(_onSearchTextChanged);
-    searchItemController.dispose();
-    super.dispose();
   }
   // List<String> items = [
   //   "Andhra Bank",
@@ -295,8 +150,8 @@ class _SalaryDepositedBankPageState extends State<SalaryDepositedBankPage> {
   //   filteredItems = items;
   //   searchItemController.addListener(_onSearchTextChanged);
 
-  //   if (widget.SalaryDepositedBank != null) {
-  //     selectedIndex = items.indexOf(widget.SalaryDepositedBank);
+  //   if (widget.ExistingBankName != null) {
+  //     selectedIndex = items.indexOf(widget.ExistingBankName);
   //   }
   // }
 
@@ -311,12 +166,12 @@ class _SalaryDepositedBankPageState extends State<SalaryDepositedBankPage> {
   //   });
   // }
 
-  // @override
-  // void dispose() {
-  //   searchItemController.removeListener(_onSearchTextChanged);
-  //   searchItemController.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    searchItemController.removeListener(_onSearchTextChanged);
+    searchItemController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -342,7 +197,7 @@ class _SalaryDepositedBankPageState extends State<SalaryDepositedBankPage> {
                   ),
                   Spacer(),
                   Text(
-                    "Salary Deposited Bank",
+                    "Select Existing Bank Name",
                     style: TextStyle(
                         fontSize: 20 * fem, color: AppColors.primaryColor),
                   ),

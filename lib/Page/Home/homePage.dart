@@ -135,7 +135,9 @@ class _HomePageState extends State<HomePage> {
                           GestureDetector(
                             onTap: () {
                               Get.to(
-                                () => ApplyPage(),
+                                () => ApplyPage(
+                                  applynow: "Personal Loan",
+                                ),
                               );
                             },
                             child: Column(
@@ -167,7 +169,9 @@ class _HomePageState extends State<HomePage> {
                           GestureDetector(
                             onTap: () {
                               Get.to(
-                                () => ApplyPage(),
+                                () => ApplyPage(
+                                  applynow: "Balance Transfer",
+                                ),
                               );
                             },
                             child: Column(
@@ -198,7 +202,9 @@ class _HomePageState extends State<HomePage> {
                           GestureDetector(
                             onTap: () {
                               Get.to(
-                                () => ApplyPage(),
+                                () => ApplyPage(
+                                  applynow: "Top Up",
+                                ),
                               );
                             },
                             child: Column(
@@ -242,7 +248,9 @@ class _HomePageState extends State<HomePage> {
                           GestureDetector(
                             onTap: () {
                               Get.to(
-                                () => ApplyPage(),
+                                () => ApplyPage(
+                                  applynow: "Credit Card",
+                                ),
                               );
                             },
                             child: Column(
@@ -274,7 +282,9 @@ class _HomePageState extends State<HomePage> {
                           GestureDetector(
                             onTap: () {
                               Get.to(
-                                () => ApplyPage(),
+                                () => ApplyPage(
+                                  applynow: "Parallel Loan",
+                                ),
                               );
                             },
                             child: Column(
@@ -308,9 +318,9 @@ class _HomePageState extends State<HomePage> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Get.to(
-                                () => ApplyPage(),
-                              );
+                              // Get.to(
+                              //   () => ApplyPage(),
+                              // );
                             },
                             child: Column(
                               children: [

@@ -5,6 +5,7 @@ class ProfileDetailsModel {
     required this.status,
     required this.message,
   });
+
   late final UserDetails userDetails;
   late final String profilepic;
   late final int status;
@@ -12,9 +13,10 @@ class ProfileDetailsModel {
 
   ProfileDetailsModel.fromJson(Map<String, dynamic> json) {
     userDetails = UserDetails.fromJson(json['userDetails']);
-    profilepic = json['profilepic'];
-    status = json['status'];
-    message = json['message'];
+    profilepic =
+        json['profilepic'] ?? ''; // Provide a default empty string if null
+    status = json['status'] ?? 0; // Provide a default value if null
+    message = json['message'] ?? ''; // Provide a default empty string if null
   }
 
   Map<String, dynamic> toJson() {
@@ -50,48 +52,49 @@ class UserDetails {
     required this.isDeleted,
     required this.profilePhotoUrl,
   });
+
   late final int id;
   late final String name;
   late final String email;
-  late final Null emailVerifiedAt;
+  late final String? emailVerifiedAt;
   late final String phone;
-  late final Null address;
+  late final String? address;
   late final String otp;
   late final int otpVerified;
   late final int verified;
-  late final Null url;
-  late final Null profilePicture;
+  late final String? url;
+  late final String? profilePicture;
   late final String createdAt;
   late final String updatedAt;
-  late final Null googleId;
-  late final Null facebookId;
+  late final String? googleId;
+  late final String? facebookId;
   late final String verificationCode;
   late final int userType;
   late final int isBlock;
   late final int isDeleted;
-  late final int profilePhotoUrl;
+  late final String profilePhotoUrl;
 
   UserDetails.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    email = json['email'];
-    emailVerifiedAt = null;
-    phone = json['phone'];
-    address = null;
-    otp = json['otp'];
-    otpVerified = json['otp_verified'];
-    verified = json['verified'];
-    url = null;
-    profilePicture = null;
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    googleId = null;
-    facebookId = null;
-    verificationCode = json['verification_code'];
-    userType = json['user_type'];
-    isBlock = json['is_block'];
-    isDeleted = json['is_deleted'];
-    profilePhotoUrl = json['profile_photo_url'];
+    id = json['id'] ?? 0; // Default int value
+    name = json['name'] ?? ''; // Default String value
+    email = json['email'] ?? ''; // Default String value
+    emailVerifiedAt = json['email_verified_at'];
+    phone = json['phone'] ?? ''; // Default String value
+    address = json['address'];
+    otp = json['otp'] ?? ''; // Default String value
+    otpVerified = json['otp_verified'] ?? 0; // Default int value
+    verified = json['verified'] ?? 0; // Default int value
+    url = json['url'];
+    profilePicture = json['profile_picture'];
+    createdAt = json['created_at'] ?? ''; // Default String value
+    updatedAt = json['updated_at'] ?? ''; // Default String value
+    googleId = json['google_id'];
+    facebookId = json['facebook_id'];
+    verificationCode = json['verification_code'] ?? ''; // Default String value
+    userType = json['user_type'] ?? 0; // Default int value
+    isBlock = json['is_block'] ?? 0; // Default int value
+    isDeleted = json['is_deleted'] ?? 0; // Default int value
+    profilePhotoUrl = json['profile_photo_url'] ?? '';
   }
 
   Map<String, dynamic> toJson() {

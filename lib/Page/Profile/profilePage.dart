@@ -39,7 +39,7 @@ class _ProfilePageState extends State<ProfilePage> {
   // }
 
   final Logincontroller logincontroller = Get.put(Logincontroller());
-  final Profilecontroller profilecontroller = Get.put(Profilecontroller());
+  final ProfileController profilecontroller = Get.put(ProfileController());
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQuery = MediaQuery.of(context);

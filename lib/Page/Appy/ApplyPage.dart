@@ -3,24 +3,50 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_loan_bazzar/Page/Appy/ApplyNowPage.dart';
+import 'package:smart_loan_bazzar/Page/Appy/ExistingBank/ExistingBank.dart';
 import 'package:smart_loan_bazzar/Page/Appy/salaryDepositedBank/SalaryDepositedBankPage.dart';
 import 'package:smart_loan_bazzar/Page/Appy/selectCity/selectCityPage.dart';
 import 'package:smart_loan_bazzar/Page/Appy/selectCompany/selectCompanyPage.dart';
 import 'package:smart_loan_bazzar/Utils/UtilsColors.dart';
 
 class ApplyPage extends StatefulWidget {
-  const ApplyPage({super.key});
+  const ApplyPage({super.key, required this.applynow});
+  final String applynow;
 
   @override
   State<ApplyPage> createState() => _ApplyPageState();
 }
 
 class _ApplyPageState extends State<ApplyPage> {
+  //Personal Loan
+  //Parallel Loan
+  //Balance Transfer
+  //Top Up
+  //Credit Card
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController mobileController = TextEditingController();
   final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController mobileController = TextEditingController();
+  // final TextEditingController selectCompanyController = TextEditingController();
+  // final TextEditingController selectCityController = TextEditingController();
+  // final TextEditingController SalaryDepositedBankController =
+  //     TextEditingController();
   final TextEditingController occupationTypeController =
       TextEditingController();
+  final TextEditingController monthlyNetIncomeController =
+      TextEditingController();
+  final TextEditingController yourLocationController = TextEditingController();
+  final TextEditingController PANController = TextEditingController();
+  final TextEditingController DateOfBirthController = TextEditingController();
+  final TextEditingController MonthlyLoanObligationController =
+      TextEditingController();
+  final TextEditingController CurrentJobVintageController =
+      TextEditingController();
+  final TextEditingController totalExperienceController =
+      TextEditingController();
+  final TextEditingController LoanAmountController = TextEditingController();
+  final TextEditingController LoanTenureController = TextEditingController();
+  // final TextEditingController  ExistingBankController= TextEditingController();
 
   String? _mobileNumberError;
   String? _fullNameError;
@@ -56,6 +82,7 @@ class _ApplyPageState extends State<ApplyPage> {
   String selectedCompany = "";
   String SelectCity = "";
   String SalaryDepositedBank = "";
+  String ExistingBankName = "";
 
   @override
   Widget build(BuildContext context) {
@@ -63,10 +90,15 @@ class _ApplyPageState extends State<ApplyPage> {
     final double screenWidth = mediaQuery.size.width;
     final double screenHeight = mediaQuery.size.height;
     final double fem = screenWidth / 375.0;
+    var applyLoan = widget.applynow == "Personal Loan";
+    var applyParallelLoan = widget.applynow == "Parallel Loan";
+    var applyTransfer = widget.applynow == "Balance Transfer";
+    var applyTopup = widget.applynow == "Top Up";
+    var applyCreditcard = widget.applynow == "Credit Card";
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Apply"),
+          title: Text(widget.applynow),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -214,7 +246,10 @@ class _ApplyPageState extends State<ApplyPage> {
                             child: Text(
                               textAlign: TextAlign.right,
                               overflow: TextOverflow.ellipsis,
-                              SelectCity.isEmpty ? "" : SelectCity,
+                              SelectCity.isEmpty
+                                  ? ""
+                                  : SelectCity.replaceAll(
+                                      RegExp(r'\{\d+\}'), ''),
                               style: TextStyle(
                                   fontSize: 18 * fem, color: Colors.black87),
                             ),
@@ -290,6 +325,7 @@ class _ApplyPageState extends State<ApplyPage> {
                     ),
                     width: screenWidth,
                     child: TextFormField(
+                      controller: occupationTypeController,
                       decoration: InputDecoration(
                         labelStyle: TextStyle(fontSize: 18 * fem),
                         labelText: "Occupation Type ",
@@ -310,6 +346,7 @@ class _ApplyPageState extends State<ApplyPage> {
                     ),
                     width: screenWidth,
                     child: TextFormField(
+                      controller: monthlyNetIncomeController,
                       decoration: InputDecoration(
                         labelStyle: TextStyle(fontSize: 18 * fem),
                         labelText: "Monthly net income",
@@ -330,6 +367,7 @@ class _ApplyPageState extends State<ApplyPage> {
                     ),
                     width: screenWidth,
                     child: TextFormField(
+                      controller: yourLocationController,
                       decoration: InputDecoration(
                         labelStyle: TextStyle(fontSize: 18 * fem),
                         labelText: "Your Location ",
@@ -350,6 +388,7 @@ class _ApplyPageState extends State<ApplyPage> {
                     ),
                     width: screenWidth,
                     child: TextFormField(
+                      controller: PANController,
                       decoration: InputDecoration(
                         labelStyle: TextStyle(fontSize: 18 * fem),
                         labelText: "PAN No.",
@@ -370,6 +409,7 @@ class _ApplyPageState extends State<ApplyPage> {
                     ),
                     width: screenWidth,
                     child: TextFormField(
+                      controller: DateOfBirthController,
                       decoration: InputDecoration(
                         labelStyle: TextStyle(fontSize: 18 * fem),
                         labelText: "Date Of Birth",
@@ -390,6 +430,7 @@ class _ApplyPageState extends State<ApplyPage> {
                     ),
                     width: screenWidth,
                     child: TextFormField(
+                      controller: MonthlyLoanObligationController,
                       decoration: InputDecoration(
                         labelStyle: TextStyle(fontSize: 18 * fem),
                         labelText: "Monthly Loan Obligation",
@@ -410,6 +451,7 @@ class _ApplyPageState extends State<ApplyPage> {
                     ),
                     width: screenWidth,
                     child: TextFormField(
+                      controller: CurrentJobVintageController,
                       decoration: InputDecoration(
                         labelStyle: TextStyle(fontSize: 18 * fem),
                         labelText: "Current job vintage in months",
@@ -430,6 +472,7 @@ class _ApplyPageState extends State<ApplyPage> {
                     ),
                     width: screenWidth,
                     child: TextFormField(
+                      controller: totalExperienceController,
                       decoration: InputDecoration(
                         labelStyle: TextStyle(fontSize: 18 * fem),
                         labelText: "Total experience",
@@ -450,6 +493,7 @@ class _ApplyPageState extends State<ApplyPage> {
                     ),
                     width: screenWidth,
                     child: TextFormField(
+                      controller: LoanAmountController,
                       decoration: InputDecoration(
                         labelStyle: TextStyle(fontSize: 18 * fem),
                         labelText: "Loan amount",
@@ -470,6 +514,7 @@ class _ApplyPageState extends State<ApplyPage> {
                     ),
                     width: screenWidth,
                     child: TextFormField(
+                      controller: LoanTenureController,
                       decoration: InputDecoration(
                         labelStyle: TextStyle(fontSize: 18 * fem),
                         labelText: "Loan Tenure(Years)",
@@ -479,6 +524,90 @@ class _ApplyPageState extends State<ApplyPage> {
                       ),
                     ),
                   ),
+
+                  applyParallelLoan == true || applyTopup == true
+                      ? Padding(
+                          padding: EdgeInsets.only(top: 15 * fem),
+                          child: GestureDetector(
+                            onTap: () async {
+                              final result =
+                                  await Get.to(() => ExistingBankPage(
+                                        ExistingBankName:
+                                            ExistingBankName, // Pass the selected company
+                                      ));
+                              if (result != null) {
+                                setState(() {
+                                  ExistingBankName = result;
+                                });
+                              }
+                              print("Salary Deposited Bank: $ExistingBankName");
+                            },
+                            // onTap: () {
+                            //   Get.to(
+                            //     () => SalaryDepositedBankPage(),
+                            //   );
+                            //   print("Salary Deposited Bank");
+                            // },
+                            child: Container(
+                              height: 60 * fem,
+                              padding: EdgeInsets.only(
+                                  left: 12 * fem, right: 12 * fem),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(35 * fem),
+                                border: Border.all(color: Colors.black26),
+                              ),
+                              width: screenWidth,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "Existing Bank Name",
+                                    style: TextStyle(
+                                        fontSize: 18 * fem,
+                                        color: Colors.black87),
+                                  ),
+                                  Spacer(),
+                                  Container(
+                                    width: 65 * fem,
+                                    child: Text(
+                                      textAlign: TextAlign.right,
+                                      overflow: TextOverflow.ellipsis,
+                                      ExistingBankName.isEmpty
+                                          ? ""
+                                          : ExistingBankName,
+                                      style: TextStyle(
+                                          fontSize: 18 * fem,
+                                          color: Colors.black87),
+                                    ),
+                                  ),
+                                  Icon(Icons.arrow_drop_down)
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
+                      : Text(""),
+                  applyCreditcard == true
+                      ? Padding(
+                          padding: EdgeInsets.only(top: 15 * fem),
+                          child: Container(
+                            padding: EdgeInsets.all(5 * fem),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(35 * fem),
+                              border: Border.all(color: Colors.black26),
+                            ),
+                            width: screenWidth,
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                labelStyle: TextStyle(fontSize: 18 * fem),
+                                labelText: "Loan Tenure(Years)",
+                                contentPadding: EdgeInsets.only(
+                                    left: 12 * fem, right: 12 * fem),
+                                border: InputBorder.none,
+                              ),
+                            ),
+                          ),
+                        )
+                      : Text(""),
                 ],
               ),
             ),
@@ -490,9 +619,9 @@ class _ApplyPageState extends State<ApplyPage> {
             child: ElevatedButton(
               onPressed: () {
                 // _validateForm();
-                Get.to(
-                  () => ApplyNowPage(),
-                );
+                // Get.to(
+                //   () => ApplyNowPage(),
+                // );
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -130,10 +130,15 @@
 //     );
 //   }
 // }
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_loan_bazzar/Utils/AppRout.dart';
 import 'package:smart_loan_bazzar/Utils/UtilsColors.dart';
+import 'package:http/http.dart' as http;
 
 class SelectCompanyPage extends StatefulWidget {
   final String? initialSelectedCompany;
@@ -146,26 +151,67 @@ class SelectCompanyPage extends StatefulWidget {
 
 class _SelectCompanyPageState extends State<SelectCompanyPage> {
   final TextEditingController searchItemController = TextEditingController();
-  List<String> items = [
-    "Fusion Techlab",
-    "Cognizent",
-    "TCS",
-    "Wipro",
-    "SD Private LTD.",
-  ];
+  List<String> items = [];
   int? selectedIndex;
   bool showSuffixIcon = false;
   List<String> filteredItems = [];
+  bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    filteredItems = items;
+    loadData();
+    fetchBanks(); // Fetch cities from the API
     searchItemController.addListener(_onSearchTextChanged);
 
-    // Initialize selectedIndex based on the passed initialSelectedCompany
     if (widget.initialSelectedCompany != null) {
-      selectedIndex = items.indexOf(widget.initialSelectedCompany!);
+      selectedIndex = items.indexOf(
+        widget.initialSelectedCompany.toString(),
+      );
+    }
+  }
+
+  String? token;
+
+  loadData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    token = prefs.getString('token');
+    await fetchBanks();
+  }
+
+  Future<void> fetchBanks() async {
+    try {
+      final response = await http.get(
+        Uri.parse(AppRout.BaseUrl + AppRout.Get_All_Company),
+      );
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseData = json.decode(response.body);
+        final List<dynamic> companiesData = responseData['companies']['data'];
+
+        print('Banks Data: $companiesData');
+
+        setState(() {
+          items = companiesData
+              .map((banks) => banks['name']?.toString() ?? 'Unknown banks')
+              .toList();
+          filteredItems = items;
+          isLoading = false;
+        });
+      } else {
+        setState(() {
+          isLoading = false;
+        });
+        Get.snackbar(
+          'Error',
+          'Failed to load cities. Status code: ${response.statusCode}',
+        );
+      }
+    } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+      Get.snackbar('Error', 'An error occurred: $e');
     }
   }
 
@@ -254,42 +300,49 @@ class _SelectCompanyPageState extends State<SelectCompanyPage> {
               height: 1.5 * fem,
               color: Colors.black12,
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: filteredItems.length,
-                padding: EdgeInsets.all(15 * fem),
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedIndex = index;
-                      });
-                      Get.back(result: filteredItems[index]);
-                    },
-                    child: Row(
-                      children: [
-                        Radio<int>(
-                          value: index,
-                          groupValue: selectedIndex,
-                          onChanged: (value) {
+            isLoading
+                ? Center(
+                    child: Container(
+                      padding: EdgeInsets.only(top: 100),
+                      child: Text("Loading..."),
+                    ),
+                  )
+                : Expanded(
+                    child: ListView.builder(
+                      itemCount: filteredItems.length,
+                      padding: EdgeInsets.all(15 * fem),
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
                             setState(() {
-                              selectedIndex = value;
+                              selectedIndex = index;
                             });
                             Get.back(result: filteredItems[index]);
                           },
-                        ),
-                        Expanded(
-                          child: Text(
-                            filteredItems[index].toUpperCase(),
-                            style: TextStyle(fontSize: 18 * fem),
+                          child: Row(
+                            children: [
+                              Radio<int>(
+                                value: index,
+                                groupValue: selectedIndex,
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedIndex = value;
+                                  });
+                                  Get.back(result: filteredItems[index]);
+                                },
+                              ),
+                              Expanded(
+                                child: Text(
+                                  filteredItems[index].toUpperCase(),
+                                  style: TextStyle(fontSize: 18 * fem),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
-            ),
+                  ),
           ],
         ),
       ),

@@ -133,6 +133,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_loan_bazzar/Utils/AppRout.dart';
+import 'dart:convert';
 import 'package:smart_loan_bazzar/Utils/UtilsColors.dart';
 
 class SelectCityPage extends StatefulWidget {
@@ -145,25 +149,66 @@ class SelectCityPage extends StatefulWidget {
 
 class _SelectCityPageState extends State<SelectCityPage> {
   final TextEditingController searchItemController = TextEditingController();
-  List<String> items = [
-    "Kolkata",
-    "Mumbai",
-    "Bangalore",
-    "Chennai",
-    "Hyderabad",
-  ];
+  List<String> items = [];
   int? selectedIndex;
   bool showSuffixIcon = false;
   List<String> filteredItems = [];
+  bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    filteredItems = items;
+    loadData();
+    fetchCities(); // Fetch cities from the API
     searchItemController.addListener(_onSearchTextChanged);
 
     if (widget.SelectCity != null) {
       selectedIndex = items.indexOf(widget.SelectCity!);
+    }
+  }
+
+  String? token;
+
+  loadData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    token = prefs.getString('token');
+    await fetchCities();
+  }
+
+  Future<void> fetchCities() async {
+    try {
+      final response = await http.get(
+        Uri.parse(AppRout.BaseUrl + AppRout.Get_All_City),
+      );
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseData = json.decode(response.body);
+        final List<dynamic> cityData = responseData['cities'];
+
+        print('City Data: $cityData');
+
+        setState(() {
+          items = cityData
+              .map((city) => city['name']?.toString() ?? 'Unknown City')
+              .toList();
+
+          filteredItems = items;
+          isLoading = false;
+        });
+      } else {
+        setState(() {
+          isLoading = false;
+        });
+        Get.snackbar(
+          'Error',
+          'Failed to load cities. Status code: ${response.statusCode}',
+        );
+      }
+    } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+      Get.snackbar('Error', 'An error occurred: $e');
     }
   }
 
@@ -190,6 +235,7 @@ class _SelectCityPageState extends State<SelectCityPage> {
     final MediaQueryData mediaQuery = MediaQuery.of(context);
     final double screenWidth = mediaQuery.size.width;
     final double fem = screenWidth / 375.0;
+
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -252,48 +298,53 @@ class _SelectCityPageState extends State<SelectCityPage> {
               height: 1.5 * fem,
               color: Colors.black12,
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: filteredItems.length,
-                padding: EdgeInsets.all(15 * fem),
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedIndex = index;
-                        // searchItemController.text = filteredItems[index];
-                        // showSuffixIcon =
-                        //     true; // Ensure the suffix icon is visible
-                      });
-                      Get.back(result: filteredItems[index]);
-                    },
-                    child: Row(
-                      children: [
-                        Radio<int>(
-                          value: index,
-                          groupValue: selectedIndex,
-                          onChanged: (value) {
-                            setState(() {
-                              selectedIndex = value;
-                              //  searchItemController.text = filteredItems[index];
-                              // showSuffixIcon =
-                              //     true; // Ensure the suffix icon is visible
-                            });
-                            Get.back(result: filteredItems[index]);
-                          },
-                        ),
-                        Expanded(
-                          child: Text(
-                            filteredItems[index].toUpperCase(),
-                            style: TextStyle(fontSize: 18 * fem),
-                          ),
-                        ),
-                      ],
+            isLoading
+                ? Center(
+                    child: Container(
+                      padding: EdgeInsets.only(top: 100),
+                      child: Text("Loading..."),
                     ),
-                  );
-                },
-              ),
-            ),
+                  )
+                : Expanded(
+                    child: ListView.builder(
+                      itemCount: filteredItems.length,
+                      padding: EdgeInsets.all(15 * fem),
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                            Get.back(
+                                result:
+                                    filteredItems[index] + "{${index + 1}}");
+                          },
+                          child: Row(
+                            children: [
+                              Radio<int>(
+                                value: index,
+                                groupValue: selectedIndex,
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedIndex = value;
+                                  });
+                                  Get.back(
+                                      result: filteredItems[index] +
+                                          "${index + 1}");
+                                },
+                              ),
+                              Expanded(
+                                child: Text(
+                                  filteredItems[index].toUpperCase(),
+                                  style: TextStyle(fontSize: 18 * fem),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
           ],
         ),
       ),
