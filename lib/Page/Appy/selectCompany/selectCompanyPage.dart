@@ -317,7 +317,8 @@ class _SelectCompanyPageState extends State<SelectCompanyPage> {
                             setState(() {
                               selectedIndex = index;
                             });
-                            Get.back(result: filteredItems[index]);
+                            Get.back(result: "{${filteredItems[index]}}" +
+                                    "{${index + 1}}");
                           },
                           child: Row(
                             children: [
@@ -328,7 +329,8 @@ class _SelectCompanyPageState extends State<SelectCompanyPage> {
                                   setState(() {
                                     selectedIndex = value;
                                   });
-                                  Get.back(result: filteredItems[index]);
+                                  Get.back(result: "{${filteredItems[index]}}" +
+                                    "{${index + 1}}");
                                 },
                               ),
                               Expanded(

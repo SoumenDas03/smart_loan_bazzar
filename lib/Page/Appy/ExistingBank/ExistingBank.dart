@@ -260,7 +260,9 @@ class _ExistingBankPageState extends State<ExistingBankPage> {
                               // showSuffixIcon =
                               //     true; // Ensure the suffix icon is visible
                             });
-                            Get.back(result: filteredItems[index]);
+                            Get.back(
+                                result: "{${filteredItems[index]}}" +
+                                    "{${index + 1}}");
                           },
                           child: Row(
                             children: [
@@ -274,7 +276,9 @@ class _ExistingBankPageState extends State<ExistingBankPage> {
                                     // showSuffixIcon =
                                     //     true; // Ensure the suffix icon is visible
                                   });
-                                  Get.back(result: filteredItems[index]);
+                                  Get.back(
+                                      result: "{${filteredItems[index]}}" +
+                                          "{${index + 1}}");
                                 },
                               ),
                               Expanded(

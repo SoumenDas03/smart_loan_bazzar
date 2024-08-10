@@ -405,7 +405,9 @@ class _SalaryDepositedBankPageState extends State<SalaryDepositedBankPage> {
                               // showSuffixIcon =
                               //     true; // Ensure the suffix icon is visible
                             });
-                            Get.back(result: filteredItems[index]);
+                            Get.back(
+                                result: "{${filteredItems[index]}}" +
+                                    "{${index + 1}}");
                           },
                           child: Row(
                             children: [
@@ -419,7 +421,9 @@ class _SalaryDepositedBankPageState extends State<SalaryDepositedBankPage> {
                                     // showSuffixIcon =
                                     //     true; // Ensure the suffix icon is visible
                                   });
-                                  Get.back(result: filteredItems[index]);
+                                  Get.back(
+                                      result: "{${filteredItems[index]}}" +
+                                          "{${index + 1}}");
                                 },
                               ),
                               Expanded(

@@ -1,7 +1,8 @@
 // ignore_for_file: unused_local_variable, unused_import, unused_element
-
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smart_loan_bazzar/Page/Appy/ApplyController.dart';
 import 'package:smart_loan_bazzar/Page/Appy/ApplyNowPage.dart';
 import 'package:smart_loan_bazzar/Page/Appy/ExistingBank/ExistingBank.dart';
 import 'package:smart_loan_bazzar/Page/Appy/salaryDepositedBank/SalaryDepositedBankPage.dart';
@@ -46,6 +47,8 @@ class _ApplyPageState extends State<ApplyPage> {
       TextEditingController();
   final TextEditingController LoanAmountController = TextEditingController();
   final TextEditingController LoanTenureController = TextEditingController();
+  final TextEditingController totalOutstandingController =
+      TextEditingController();
   // final TextEditingController  ExistingBankController= TextEditingController();
 
   String? _mobileNumberError;
@@ -85,6 +88,14 @@ class _ApplyPageState extends State<ApplyPage> {
   String ExistingBankName = "";
 
   @override
+  void initState() {
+    DateOfBirthController.text = ""; //set the initial value of text field
+    super.initState();
+  }
+
+  final Applycontroller applycontroller = Get.put(Applycontroller());
+
+  @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQuery = MediaQuery.of(context);
     final double screenWidth = mediaQuery.size.width;
@@ -95,6 +106,44 @@ class _ApplyPageState extends State<ApplyPage> {
     var applyTransfer = widget.applynow == "Balance Transfer";
     var applyTopup = widget.applynow == "Top Up";
     var applyCreditcard = widget.applynow == "Credit Card";
+
+    String existingBankNameController = ExistingBankName.isEmpty
+        ? ""
+        : ExistingBankName.replaceAll(
+                RegExp(r'\{(.*?)\}').firstMatch(ExistingBankName)?.group(1) ??
+                    '',
+                "")
+            .replaceAll(RegExp(r'\{?\}?'), '')
+            .trim();
+
+    String salaryDepositedBankController = SalaryDepositedBank.isEmpty
+        ? ""
+        : SalaryDepositedBank.replaceAll(
+                RegExp(r'\{(.*?)\}')
+                        .firstMatch(SalaryDepositedBank)
+                        ?.group(1) ??
+                    '',
+                "")
+            .replaceAll(RegExp(r'\{?\}?'), '')
+            .trim();
+
+    String selectCompanyController = selectedCompany.isEmpty
+        ? ""
+        : selectedCompany
+            .replaceAll(
+                RegExp(r'\{(.*?)\}').firstMatch(selectedCompany)?.group(1) ??
+                    '',
+                "")
+            .replaceAll(RegExp(r'\{?\}?'), '')
+            .trim();
+
+    String selectCityController = SelectCity.isEmpty
+        ? ""
+        : SelectCity.replaceAll(
+                RegExp(r'\{(.*?)\}').firstMatch(SelectCity)?.group(1) ?? '', "")
+            .replaceAll(RegExp(r'\{?\}?'), '')
+            .trim();
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -200,7 +249,12 @@ class _ApplyPageState extends State<ApplyPage> {
                             child: Text(
                               textAlign: TextAlign.right,
                               overflow: TextOverflow.ellipsis,
-                              selectedCompany.isEmpty ? "" : selectedCompany,
+                              selectedCompany.isEmpty
+                                  ? ""
+                                  : selectedCompany
+                                          .replaceAll(RegExp(r'\{\d+\}'), '')
+                                          .replaceAll(RegExp(r'[{}]'), '') ??
+                                      '',
                               style: TextStyle(
                                   fontSize: 18 * fem, color: Colors.black87),
                             ),
@@ -249,7 +303,9 @@ class _ApplyPageState extends State<ApplyPage> {
                               SelectCity.isEmpty
                                   ? ""
                                   : SelectCity.replaceAll(
-                                      RegExp(r'\{\d+\}'), ''),
+                                              RegExp(r'\{\d+\}'), '')
+                                          .replaceAll(RegExp(r'[{}]'), '') ??
+                                      '',
                               style: TextStyle(
                                   fontSize: 18 * fem, color: Colors.black87),
                             ),
@@ -304,7 +360,10 @@ class _ApplyPageState extends State<ApplyPage> {
                               overflow: TextOverflow.ellipsis,
                               SalaryDepositedBank.isEmpty
                                   ? ""
-                                  : SalaryDepositedBank,
+                                  : SalaryDepositedBank.replaceAll(
+                                              RegExp(r'\{\d+\}'), '')
+                                          .replaceAll(RegExp(r'[{}]'), '') ??
+                                      '',
                               style: TextStyle(
                                   fontSize: 18 * fem, color: Colors.black87),
                             ),
@@ -417,6 +476,30 @@ class _ApplyPageState extends State<ApplyPage> {
                             EdgeInsets.only(left: 12 * fem, right: 12 * fem),
                         border: InputBorder.none,
                       ),
+                      readOnly:
+                          true, //set it true, so that user will not able to edit text
+                      onTap: () async {
+                        DateTime? pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1900),
+                          lastDate: DateTime(2101),
+                        );
+
+                        if (pickedDate != null) {
+                          print(pickedDate);
+                          String formattedDate = DateFormat(
+                            'MM-dd-yyyy',
+                          ).format(pickedDate);
+                          print(formattedDate);
+                          setState(() {
+                            DateOfBirthController.text =
+                                formattedDate; //set output date to TextField value.
+                          });
+                        } else {
+                          print("Date is not selected");
+                        }
+                      },
                     ),
                   ),
                   SizedBox(
@@ -573,7 +656,11 @@ class _ApplyPageState extends State<ApplyPage> {
                                       overflow: TextOverflow.ellipsis,
                                       ExistingBankName.isEmpty
                                           ? ""
-                                          : ExistingBankName,
+                                          : ExistingBankName.replaceAll(
+                                                      RegExp(r'\{\d+\}'), '')
+                                                  .replaceAll(
+                                                      RegExp(r'[{}]'), '') ??
+                                              '',
                                       style: TextStyle(
                                           fontSize: 18 * fem,
                                           color: Colors.black87),
@@ -597,9 +684,10 @@ class _ApplyPageState extends State<ApplyPage> {
                             ),
                             width: screenWidth,
                             child: TextFormField(
+                              controller: totalOutstandingController,
                               decoration: InputDecoration(
                                 labelStyle: TextStyle(fontSize: 18 * fem),
-                                labelText: "Loan Tenure(Years)",
+                                labelText: "Total Outstanding",
                                 contentPadding: EdgeInsets.only(
                                     left: 12 * fem, right: 12 * fem),
                                 border: InputBorder.none,
@@ -622,6 +710,31 @@ class _ApplyPageState extends State<ApplyPage> {
                 // Get.to(
                 //   () => ApplyNowPage(),
                 // );
+                applycontroller.applyLoanForm(
+                  name: fullNameController.text.trim().toString(),
+                  loan_type: widget.applynow,
+                  phone_number: mobileController.text.trim().toString(),
+                  occupation: occupationTypeController.text.trim().toString(),
+                  othercompany: "",
+                  company_id: selectCompanyController.toString(),
+                  city_id: selectCityController.toString(),
+                  monthely_net_income:
+                      monthlyNetIncomeController.text.trim().toString(),
+                  location: yourLocationController.text.trim().toString(),
+                  pancard_no: PANController.text.trim().toString(),
+                  date_of_birth: DateOfBirthController.text.trim().toString(),
+                  monthly_loan_obligation:
+                      MonthlyLoanObligationController.text.trim().toString(),
+                  total_exprienced:
+                      totalExperienceController.text.trim().toString(),
+                  current_job_vintage:
+                      CurrentJobVintageController.text.trim().toString(),
+                  salary_deposited_bank: salaryDepositedBankController,
+                  other_Salarybank: "",
+                  loan_amt: LoanAmountController.text.trim().toString(),
+                  loan_tenure: LoanTenureController.text.trim().toString(),
+                  existing_bank: existingBankNameController.toString(),
+                );
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

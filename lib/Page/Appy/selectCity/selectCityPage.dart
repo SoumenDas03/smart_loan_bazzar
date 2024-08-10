@@ -316,8 +316,8 @@ class _SelectCityPageState extends State<SelectCityPage> {
                               selectedIndex = index;
                             });
                             Get.back(
-                                result:
-                                    filteredItems[index] + "{${index + 1}}");
+                                result: "{${filteredItems[index]}}" +
+                                    "{${index + 1}}");
                           },
                           child: Row(
                             children: [
@@ -329,8 +329,8 @@ class _SelectCityPageState extends State<SelectCityPage> {
                                     selectedIndex = value;
                                   });
                                   Get.back(
-                                      result: filteredItems[index] +
-                                          "${index + 1}");
+                                      result: "{${filteredItems[index]}}" +
+                                          "{${index + 1}}");
                                 },
                               ),
                               Expanded(

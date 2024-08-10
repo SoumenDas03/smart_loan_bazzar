@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+// import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:get/get.dart';
 import 'package:smart_loan_bazzar/Page/Appy/ApplyPage.dart';
@@ -36,35 +36,36 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.grey.withOpacity(0.1),
         body: Column(
           children: [
-            CarouselSlider(
-              items: imageUrls.map((imageUrl) {
-                return Container(
-                  margin: EdgeInsets.all(6.0 * fem),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0 * fem),
-                    image: DecorationImage(
-                      image: AssetImage(imageUrl),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                );
-              }).toList(),
-              options: CarouselOptions(
-                height: 185.0 * fem,
-                enlargeCenterPage: true,
-                autoPlay: true,
-                aspectRatio: 12 / 3,
-                autoPlayCurve: Curves.fastOutSlowIn,
-                enableInfiniteScroll: true,
-                autoPlayAnimationDuration: Duration(milliseconds: 800),
-                viewportFraction: 0.8,
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    _currentIndex = index;
-                  });
-                },
-              ),
-            ),
+            // CarouselSlider(
+            //   items: imageUrls.map((imageUrl) {
+            //     return Container(
+            //       margin: EdgeInsets.all(6.0 * fem),
+            //       decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(8.0 * fem),
+            //         image: DecorationImage(
+            //           image: AssetImage(imageUrl),
+            //           fit: BoxFit.cover,
+            //         ),
+            //       ),
+            //     );
+            //   }).toList(),
+            //   options: CarouselOptions(
+            //     height: 185.0 * fem,
+            //     enlargeCenterPage: true,
+            //     autoPlay: true,
+            //     aspectRatio: 12 / 3,
+            //     autoPlayCurve: Curves.fastOutSlowIn,
+            //     enableInfiniteScroll: true,
+            //     autoPlayAnimationDuration: Duration(milliseconds: 800),
+            //     viewportFraction: 0.8,
+            //     onPageChanged: (index, reason) {
+            //       setState(() {
+            //         _currentIndex = index;
+            //       });
+            //     },
+            //   ),
+            // ),
+            
             DotsIndicator(
               dotsCount: imageUrls.length,
               position: _currentIndex,

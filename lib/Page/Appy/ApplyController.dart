@@ -2,20 +2,26 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:smart_loan_bazzar/Page/Auth/Otp/OtpPage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_loan_bazzar/Utils/AppRout.dart';
 import 'package:smart_loan_bazzar/Utils/snakebarUtils.dart';
 
-class Registercontroller extends GetxController {
-  final isChecked = false.obs;
+class Applycontroller extends GetxController {
+  String? token;
+  @override
+  void onInit() {
+    super.onInit();
+    loadData();
+  }
 
-  void toggleCheckbox(bool newValue) {
-    isChecked.value = newValue;
+  loadData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    token = prefs.getString('token');
   }
 
   final RxBool isLoading = false.obs;
 
-  Future<void> userRegister({
+  Future<void> applyLoanForm({
     required String name,
     required String loan_type,
     required String phone_number,
@@ -30,7 +36,7 @@ class Registercontroller extends GetxController {
     required String monthly_loan_obligation,
     required String total_exprienced,
     required String current_job_vintage,
-    required String salary_bank,
+    required String salary_deposited_bank,
     required String other_Salarybank,
     required String loan_amt,
     required String loan_tenure,
@@ -39,13 +45,29 @@ class Registercontroller extends GetxController {
     try {
       isLoading(true);
       final response = await http.post(
-        Uri.parse(AppRout.BaseUrl + AppRout.User_Register),
-        // body: {
-        //   "name": name,
-        //   "email": email,
-        //   "password": password,
-        //   "phone": phone,
-        // },
+        Uri.parse(AppRout.BaseUrl + AppRout.Loan_Form),
+        headers: {"Authorization": "Bearer $token"},
+        body: {
+          "name": name,
+          "loan_type": loan_type,
+          "phone_number": phone_number,
+          "occupation": occupation,
+          "othercompany": othercompany,
+          "company_id": company_id,
+          "city_id": city_id,
+          "monthely_net_income": monthely_net_income,
+          "location": location,
+          "pancard_no": pancard_no,
+          "date_of_birth": date_of_birth,
+          "monthly_loan_obligation": monthly_loan_obligation,
+          "total_exprienced": total_exprienced,
+          "current_job_vintage": current_job_vintage,
+          "salary_deposited_bank": salary_deposited_bank,
+          "other_Salarybank": other_Salarybank,
+          "loan_amt": loan_amt,
+          "loan_tenure": loan_tenure,
+          "existing_bank": existing_bank,
+        },
       );
       if (response.statusCode == 200) {
         print(response.body);
@@ -61,22 +83,21 @@ class Registercontroller extends GetxController {
         //       )
         //     : null;
         SnackbarUtils.showFloatingSnackbar(
-          "Message",
-          jsonDecode(
-                    response.body.toString(),
-                  )["message"] ==
-                  "Registration Successfull"
-              ? "Check Your OTP"
-              : jsonDecode(
-                  response.body.toString(),
-                )["message"][0]
-                  .toString(),
+          "Success",
+          "loan form submitted",
+          snackPosition: SnackPosition.TOP,
+        );
+      }
+      if (response.statusCode == 500) {
+        SnackbarUtils.showFloatingSnackbar(
+          "Error",
+          "Interna Server error",
           snackPosition: SnackPosition.TOP,
         );
       } else {
         SnackbarUtils.showFloatingSnackbar(
           "Error",
-          response.body,
+          "Fail",
           snackPosition: SnackPosition.TOP,
         );
       }

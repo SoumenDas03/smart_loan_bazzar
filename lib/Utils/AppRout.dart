@@ -9,4 +9,5 @@ class AppRout {
   static const String Get_All_Bank = "/api/get-all-bank";
   static const String Get_All_Company = "/api/get-all-company";
   static const String Get_All_City = "/api/getallcity";
+  static const String Loan_Form = "/api/loan-form";
 }
